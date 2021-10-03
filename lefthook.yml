@@ -1,0 +1,18 @@
+def:
+  files:
+    staged files: &staged git diff --name-only --staged
+  commands:
+    rubocop on files: &rcopfiles bin/rubocop -c .rubocop.yml -fs --force-exclusion {files}
+
+pre-commit:
+  piped: true
+  commands:
+    01 rubocop:
+      run: *rcopfiles
+      files: *staged
+
+post-merge:
+  piped: true
+  commands:
+    00 bundle:
+      run: bundle check || bundle

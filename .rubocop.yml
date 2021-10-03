@@ -1,0 +1,20 @@
+---
+inherit_mode:
+  merge:
+    - Exclude
+    - ExcludedMethods
+
+require:
+  - rubocop-rails
+
+AllCops:
+  NewCops: enable
+  Exclude:
+    - 'db/schema.rb'
+
+Metrics/AbcSize:
+  Exclude:
+    - 'db/migrate/*'
+
+Style/Documentation:
+  Enabled: false
