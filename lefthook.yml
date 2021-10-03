@@ -1,7 +1,9 @@
 def:
   files:
+    pushed files: &pushed git diff --name-only HEAD @{push}
     staged files: &staged git diff --name-only --staged
   commands:
+    rspec on files: &rspecfiles bin/rspec -f d {files}
     rubocop on files: &rcopfiles bin/rubocop -c .rubocop.yml -fs --force-exclusion {files}
 
 pre-commit:
@@ -10,6 +12,13 @@ pre-commit:
     01 rubocop:
       run: *rcopfiles
       files: *staged
+
+pre-push:
+  piped: true
+  commands:
+    01 rubocop:
+      run: *rcopfiles
+      files: *pushed
 
 post-merge:
   piped: true
