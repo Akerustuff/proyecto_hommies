@@ -1,0 +1,13 @@
+<h2>Crear casa</h2>
+
+<%= form_with(model: @house, local: true)  do |f| %>
+
+  <div class="field">
+    <%= f.label :name %><br />
+    <%= f.text_field :name %>
+  </div>
+
+  <div class="actions">
+    <%= f.submit "Crear casa" %>
+  </div>
+<% end %>

@@ -15,6 +15,10 @@ AllCops:
 Metrics/AbcSize:
   Exclude:
     - 'db/migrate/*'
+  Enabled: false
+
+Metrics/MethodLength:
+  Enabled: false
 
 Style/Documentation:
   Enabled: false
