@@ -7,4 +7,5 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :validatable
 
   belongs_to :house, optional: true
+  validates :first_name, :last_name, presence: true
 end

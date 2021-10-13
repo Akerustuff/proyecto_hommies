@@ -1,0 +1,13 @@
+<h2>Unirme a casa</h2>
+
+<%= form_with(url: join_house_path, local: true)  do |f| %>
+
+  <div class="field">
+    <%= f.label :code %><br />
+    <%= f.text_field :code %>
+  </div>
+
+  <div class="actions">
+    <%= f.submit "Unirme" %>
+  </div>
+<% end %>

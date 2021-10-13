@@ -11,7 +11,7 @@ class ApplicationController < ActionController::Base
   protected
 
   def redirect_if_no_house
-    redirect_to landing_path if user_signed_in? && current_user.house_id.nil?
+    redirect_to landing_index_path if user_signed_in? && current_user.house_id.nil?
   end
 
   def configure_permitted_parameters
