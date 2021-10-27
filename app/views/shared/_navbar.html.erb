@@ -10,7 +10,7 @@
         <li class="nav-item mr-4">
           <%= link_to 'Cerrar sesión', destroy_user_session_path, method: :delete, class: 'nav_link' %>
         <li class="nav-item mr-4">
-          <%= link_to 'Mi perfil', user_profile_path(id: current_user.id), class: 'nav_link'%>
+          <%= link_to 'Mi perfil', user_profile_path, class: 'nav_link'%>
       <% else %>
         <li class="nav-item mr-4">
           <%= link_to 'Registrate', new_user_registration_path, class:'nav_link' %>
