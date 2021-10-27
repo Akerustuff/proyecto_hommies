@@ -12,8 +12,8 @@ class UserProfilesController < ApplicationController
     current_user
     respond_to do |format|
       if current_user.update(user_profile_params)
-        format.html { redirect_to @profile, notice: 'El perfil ha sido actualizado' }
-        format.json { render :show, status: :ok, location: @profile }
+        format.html { redirect_to user_profile_path, notice: 'El perfil ha sido actualizado' }
+        format.json { render :show, status: :ok, location: user_profile_path }
       else
         format.html { render :edit, status: :unprocessable_entity }
         format.json { render json: @profile.errors, status: :unprocessable_entity }
@@ -29,6 +29,6 @@ class UserProfilesController < ApplicationController
   end
 
   def user_profile_params
-    params.require(:user).permit(:first_name, :last_name)
+    params.permit(:first_name, :last_name)
   end
 end

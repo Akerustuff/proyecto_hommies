@@ -2,7 +2,8 @@
 
 Rails.application.routes.draw do
   # Users routes
-  resources :user_profiles, only: %i[show]
+  resource :user_profile, only: %i[show edit update]
+  # put 'user_profile', to:'user_profile#update'
   devise_for :users
 
   # Landing route
