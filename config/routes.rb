@@ -14,6 +14,6 @@ Rails.application.routes.draw do
   resources :houses, only: %i[new create show]
   get 'join', to: 'houses#join'
   post 'join_house', to: 'houses#join_house'
-
+  get 'leave_house', to: 'houses#leave_house'
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end

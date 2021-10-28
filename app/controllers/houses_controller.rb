@@ -50,6 +50,20 @@ class HousesController < ApplicationController
     @house = House.find_by(id: params[:id])
   end
 
+  def leave_house
+    current_user.house_id = nil
+    respond_to do |format|
+      if current_user.save
+        format.html { redirect_to landing_index_path, notice: 'You left the house successfully.' }
+        # format.json { render :show, status: :created, location: @house }
+      else
+        format.html { redirect_to landing_index_path, status: :unprocessable_entity }
+        # format.json { render json: @house.errors, status: :unprocessable_entity }
+      end
+      format.js
+    end
+  end
+
   private
 
   def house_params
