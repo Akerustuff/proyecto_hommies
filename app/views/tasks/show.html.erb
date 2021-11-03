@@ -1,0 +1,32 @@
+<p>
+  <strong>Nombre:</strong>
+  <%= @task.name %>
+</p>
+
+<p>
+  <strong>Descripcion:</strong>
+  <%= @task.description %>
+</p>
+
+<p>
+  <strong>Categoria:</strong>
+  <%= @task.category %>
+</p>
+
+<p>
+  <strong>Fecha limite:</strong>
+  <%= @task.limit_date %>
+</p>
+
+<p>
+  <strong>Creado por:</strong>
+  <%= @task.owner %>
+</p>
+
+<p>
+  <strong>Asignado a:</strong>
+  <%= @task.assignee %>
+</p>
+
+<%= link_to 'Edit', edit_task_path(@task) %> |
+<%= link_to 'Back', tasks_path %>

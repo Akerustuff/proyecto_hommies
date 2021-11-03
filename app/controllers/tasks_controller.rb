@@ -1,6 +1,8 @@
 # frozen_string_literal: true
 
 class TasksController < ApplicationController
+  before_action :set_task, only: %i[show edit update destroy]
+  
   def index
     @tasks = Task.all
   end
@@ -12,8 +14,9 @@ class TasksController < ApplicationController
   end
 
   def create
-    @task = Task.new(task_params)
-
+    @task = Task.new(create_params)
+    @task.owner_id = current_user.id
+    @task.house_id = current_user.house_id
     respond_to do |format|
       if @task.save
         format.html { redirect_to @task, notice: 'La tarea fue creada con èxito.' }
@@ -33,9 +36,13 @@ class TasksController < ApplicationController
 
   private
 
+  def set_task
+    @task = Task.find(params[:id])
+  end
+
   def create_params
-    params.require(:task).permit(:name, :description, :category, :limit_date, :finished_date, :owner_user_id,
-                                 :assignee_user_id)
+    params.require(:task).permit(:name, :description, :category, :limit_date, :finished_date, :owner_id,
+                                 :assignee_id)
   end
 
   def finish_params
@@ -43,6 +50,6 @@ class TasksController < ApplicationController
   end
 
   def approve_params
-    params.require(:task).permit(:approved_date, :reviewer_user_id)
+    params.require(:task).permit(:approved_date, :reviewer_id)
   end
 end
