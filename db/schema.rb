@@ -10,16 +10,46 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_10_10_010309) do
+ActiveRecord::Schema.define(version: 2021_11_02_162750) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "culos", force: :cascade do |t|
+    t.string "name"
+    t.text "description"
+    t.integer "category"
+    t.date "limit_date"
+    t.date "finished_date"
+    t.date "approved_date"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
 
   create_table "houses", force: :cascade do |t|
     t.string "name"
     t.string "code"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+  end
+
+  create_table "tasks", force: :cascade do |t|
+    t.string "name"
+    t.text "description"
+    t.integer "category"
+    t.date "limit_date"
+    t.date "finished_date"
+    t.date "approved_date"
+    t.bigint "house_id"
+    t.bigint "owner_id"
+    t.bigint "assignee_id"
+    t.bigint "reviewer_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["assignee_id"], name: "index_tasks_on_assignee_id"
+    t.index ["house_id"], name: "index_tasks_on_house_id"
+    t.index ["owner_id"], name: "index_tasks_on_owner_id"
+    t.index ["reviewer_id"], name: "index_tasks_on_reviewer_id"
   end
 
   create_table "users", force: :cascade do |t|
@@ -39,5 +69,9 @@ ActiveRecord::Schema.define(version: 2021_10_10_010309) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
+  add_foreign_key "tasks", "houses"
+  add_foreign_key "tasks", "users", column: "assignee_id"
+  add_foreign_key "tasks", "users", column: "owner_id"
+  add_foreign_key "tasks", "users", column: "reviewer_id"
   add_foreign_key "users", "houses"
 end

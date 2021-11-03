@@ -15,5 +15,15 @@ Rails.application.routes.draw do
   get 'join', to: 'houses#join'
   post 'join_house', to: 'houses#join_house'
   get 'leave_house', to: 'houses#leave_house'
+
+  # Task routes
+  resources :tasks
+  # get 'tasks/index'
+  # get 'tasks/new'
+  # get 'tasks/create'
+  # get 'tasks/edit'
+  # get 'tasks/update'
+  # get 'tasks/destroy'
+
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end

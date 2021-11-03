@@ -1,0 +1,41 @@
+<%= form_with(url: user_profile_path, method: :put, local: true) do |form| %>
+
+<div class="field">
+    <%= form.label :name %>
+    <%= form.text_field :name %>
+  </div>
+
+  <div class="field">
+    <%= form.label :description %>
+    <%= form.text_area :description %>
+  </div>
+
+  <div class="field">
+    <%= form.label :category %>
+    <%= form.select :category, Task.categories.keys %>
+  </div>
+
+  <div class="field">
+    <%= form.label :limit_date %>
+    <%= form.date_select :limit_date %>
+  </div>
+
+  <div class="field">
+    <%= form.label :finished_date %>
+    <%= form.date_select :finished_date %>
+  </div>
+
+  <div class="field">
+    <%= form.label :approved_date %>
+    <%= form.date_select :approved_date %>
+  </div>
+
+  <div class="field">
+    <%= form.label :assignee_user %>
+    <%= form.collection_select(:task, :assignee_user_id, User.all, :id :name) %>
+  </div>
+
+  <div class="actions">
+    <%= form.submit %>
+  </div>
+<% end %>

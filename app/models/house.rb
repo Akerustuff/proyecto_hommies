@@ -4,6 +4,7 @@ class House < ApplicationRecord
   before_create :generate_code
 
   has_many :users, dependent: nil
+  has_many :tasks, dependent: :destroy
   validates :name, presence: true
 
   private

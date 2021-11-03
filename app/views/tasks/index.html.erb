@@ -1,0 +1,31 @@
+<h1>Tasks#index</h1>
+
+<div>
+  <%= link_to 'Nueva tarea', new_task_path %>
+</div>
+<table>
+  <tr>
+    <th>Nombre</th>
+    <th>Descripción</th>
+    <th>Categoria</th>
+    <th>Fecha limite</th>
+    <th>Fecha fin</th>
+    <th>Fecha de aprobacion</th>
+    <th>Asignado a</th>
+    <th>Creado por</th>
+    <th>Aprobado por</th>
+  </tr>
+  <tr>
+  <% @tasks.each do |task|%>
+    <td><%= task.name%></td>
+    <td><%= task.description%></td>
+    <td><%= task.category%></td>
+    <td><%= task.limit_date%></td>
+    <td><%= task.finished_date%></td>
+    <td><%= task.approved_date%></td>
+    <td><%= task.assignee_user%></td>
+    <td><%= task.owner_user%></td>
+    <td><%= task.reviewer_user%></td>
+  <% end %>
+  </tr>
+</table>
