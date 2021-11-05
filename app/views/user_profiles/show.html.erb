@@ -16,4 +16,38 @@
 <div>
   <h2>Mis tareas por hacer</h2>
 </div>
+<div>
+  <table>
+    <thead>
+      <tr>
+        <th>Nombre</th>
+        <th>Descripción</th>
+        <th>Categoría</th>
+        <th>Fecha límite</th>
+        <th>Fecha de finalización</th>
+        <th>Fecha de aprobación</th>
+        <th colspan="3"></th>
+      </tr>
+    </thead>
+
+    <tbody>
+      <% @my_pending_tasks.each do |task| %>
+        <tr>
+          <td><%= task.name%></td>
+          <td><%= task.description%></td>
+          <td><%= task.category%></td>
+          <td><%= task.limit_date%></td>
+          <td><%= task.finished_date%></td>
+          <td><%= task.approved_date%></td>
+          <td><%= task.assignee%></td>
+          <td><%= task.owner%></td>
+          <td><%= task.reviewer%></td>
+          <td><%= link_to 'Show', task %></td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+</div>
+<br>
+
 

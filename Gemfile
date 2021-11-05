@@ -8,6 +8,8 @@ ruby '2.6.3'
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '~> 5.2.3'
 
+gem 'aasm'
+gem 'after_commit_everywhere', '~> 1.0'
 gem 'devise'
 gem 'dotenv-rails'
 # Use postgresql as the database for Active Record
