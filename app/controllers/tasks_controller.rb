@@ -30,9 +30,26 @@ class TasksController < ApplicationController
 
   def edit; end
 
-  def update; end
+  def update
+    respond_to do |format|
+      if @task.update(create_params)
+        format.html { redirect_to @task, notice: 'La tarea ha sido actualizada.' }
+        # format.json { render :show, status: :ok, location: @task }
+      else
+        format.html { render :edit, status: :unprocessable_entity }
+        # format.json { render json: @culo.errors, status: :unprocessable_entity }
+      end
+    end
+  end
 
-  def destroy; end
+  def destroy
+    @task.destroy
+    @house = current_user.house_id
+    respond_to do |format|
+      format.html { redirect_to house_path(@house), notice: 'La tarea ha sido eliminada.' }
+      format.json { head :no_content }
+    end
+  end
 
   private
 
@@ -41,7 +58,7 @@ class TasksController < ApplicationController
   end
 
   def create_params
-    params.require(:task).permit(:name, :description, :category, :limit_date, :finished_date, :owner_id,
+    params.require(:task).permit(:name, :description, :category, :limit_date, :owner_id,
                                  :assignee_id)
   end
 

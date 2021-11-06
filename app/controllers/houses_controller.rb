@@ -48,6 +48,7 @@ class HousesController < ApplicationController
 
   def show
     @house = House.find_by(id: params[:id])
+    @house_pending_tasks = @house.tasks.created
   end
 
   def leave_house
