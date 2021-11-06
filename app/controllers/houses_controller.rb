@@ -52,6 +52,7 @@ class HousesController < ApplicationController
   end
 
   def leave_house
+    House.change_ownership_tasks
     current_user.house_id = nil
     respond_to do |format|
       if current_user.save
@@ -62,6 +63,15 @@ class HousesController < ApplicationController
         # format.json { render json: @house.errors, status: :unprocessable_entity }
       end
       format.js
+    end
+  end
+
+  def change_ownership_tasks
+    @tasks = Task.where(owner_id: current_user.id)
+    @owner_house = User.find_by(owner: true, house_id: current_user.house_id)
+    @tasks.each do |task|
+      task.owner_id = @owner_house.id
+      task.save
     end
   end
 

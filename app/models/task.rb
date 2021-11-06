@@ -5,15 +5,23 @@ class Task < ApplicationRecord
 
   belongs_to :house
   belongs_to :owner, class_name: 'User', inverse_of: :owned_tasks
-  belongs_to :assignee, class_name: 'User', inverse_of: :assigned_tasks
+  belongs_to :assignee, class_name: 'User', inverse_of: :assigned_tasks, optional: true
   belongs_to :reviewer, class_name: 'User', inverse_of: :reviewed_tasks, optional: true
 
   aasm do
     state :created, initial: true
-    state :finished, :approved
+    state :assigned, :finished, :approved
+
+    event :assign do
+      transitions from: :created, to: :assigned
+    end
 
     event :finish do
-      transitions from: :created, to: :finished
+      transitions from: :assigned, to: :finished
+    end
+
+    event :unassign do
+      transitions from: :assigned, to: :created
     end
 
     event :approve do

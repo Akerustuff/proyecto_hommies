@@ -4,12 +4,14 @@ class TasksController < ApplicationController
   before_action :set_task, only: %i[show edit update destroy]
 
   def index
-    @tasks = Task.all
+    @house = House.find_by(id: current_user.house_id)
+    @tasks = @house.tasks.created
   end
 
   def show; end
 
   def new
+    @users = User.where(house_id: current_user.house_id)
     @task = Task.new
   end
 
@@ -17,6 +19,7 @@ class TasksController < ApplicationController
     @task = Task.new(create_params)
     @task.owner_id = current_user.id
     @task.house_id = current_user.house_id
+    @task.assign unless @task.assignee_id.nil?
     respond_to do |format|
       if @task.save
         format.html { redirect_to @task, notice: 'La tarea fue creada con èxito.' }
