@@ -48,15 +48,29 @@ class HousesController < ApplicationController
 
   def show
     @house = House.find_by(id: params[:id])
-    @house_pending_tasks = @house.tasks.created
+    @house_pending_tasks = @house.tasks.assigned
   end
 
   def leave_house
-    House.change_ownership_tasks
+    @house = House.find_by(id: current_user.house_id)
+    # @house.change_ownership_tasks
+    @tasks = Task.where(owner_id: current_user.id)
+    @owner_house = User.find_by(owner: true, house_id: current_user.house_id)
+    @tasks.each do |task|
+      task.owner_id = @owner_house.id
+      task.save
+    end
+    @tasks = Task.where(assignee_id: current_user.id)
+    @tasks.each do |task|
+      task.assignee_id = nil
+      task.unassign
+      task.save
+    end
+    # current_user.unassign_tasks
     current_user.house_id = nil
     respond_to do |format|
       if current_user.save
-        format.html { redirect_to landing_index_path, notice: 'You left the house successfully.' }
+        format.html { redirect_to landing_index_path, notice: 'Has dejado la casa.' }
         # format.json { render :show, status: :created, location: @house }
       else
         format.html { redirect_to landing_index_path, status: :unprocessable_entity }
@@ -66,14 +80,22 @@ class HousesController < ApplicationController
     end
   end
 
-  def change_ownership_tasks
-    @tasks = Task.where(owner_id: current_user.id)
-    @owner_house = User.find_by(owner: true, house_id: current_user.house_id)
-    @tasks.each do |task|
-      task.owner_id = @owner_house.id
-      task.save
-    end
-  end
+  # def change_ownership_tasks
+  #   @tasks = Task.where(owner_id: current_user.id)
+  #   @owner_house = User.find_by(owner: true, house_id: current_user.house_id)
+  #   @tasks.each do |task|
+  #     task.owner_id = @owner_house.id
+  #     task.save
+  #   end
+  # end
+
+  # def unassign_tasks
+  #   @tasks = Task.where(assignee_id: current_user.id)
+  #   @tasks.each do |task|
+  #     task.assignee_id = nil
+  #     task.save
+  #   end
+  # end
 
   private
 

@@ -5,7 +5,7 @@ class TasksController < ApplicationController
 
   def index
     @house = House.find_by(id: current_user.house_id)
-    @tasks = @house.tasks.created
+    @tasks = @house.tasks.all
   end
 
   def show; end
@@ -31,9 +31,14 @@ class TasksController < ApplicationController
     end
   end
 
-  def edit; end
+  def edit
+    @users = User.where(house_id: current_user.house_id)
+  end
 
   def update
+    @task.update(create_params)
+    @task.assign if @task.created? && !@task.assignee_id.nil?
+    @task.unassign if @task.assigned? && @task.assignee_id.nil?
     respond_to do |format|
       if @task.update(create_params)
         format.html { redirect_to @task, notice: 'La tarea ha sido actualizada.' }

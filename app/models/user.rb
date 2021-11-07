@@ -18,6 +18,6 @@ class User < ApplicationRecord
   end
 
   def pending_tasks
-    assigned_tasks.created
+    assigned_tasks.assigned
   end
 end
