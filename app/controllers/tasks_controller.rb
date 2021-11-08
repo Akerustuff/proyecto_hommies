@@ -5,7 +5,7 @@ class TasksController < ApplicationController
 
   def index
     @house = House.find_by(id: current_user.house_id)
-    @tasks = @house.tasks.all
+    @tasks = @house.house_pending_tasks(current_user)
   end
 
   def show; end

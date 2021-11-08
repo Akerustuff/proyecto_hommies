@@ -7,6 +7,11 @@ class HousesController < ApplicationController
     @house = House.new
   end
 
+  def show
+    @house = House.find_by(id: params[:id])
+    @house_pending_tasks = @house.house_pending_tasks(current_user)
+  end
+
   def create
     @house = House.new(house_params)
 
@@ -46,27 +51,10 @@ class HousesController < ApplicationController
     end
   end
 
-  def show
-    @house = House.find_by(id: params[:id])
-    @house_pending_tasks = @house.tasks.assigned
-  end
-
   def leave_house
     @house = House.find_by(id: current_user.house_id)
-    # @house.change_ownership_tasks
-    @tasks = Task.where(owner_id: current_user.id)
-    @owner_house = User.find_by(owner: true, house_id: current_user.house_id)
-    @tasks.each do |task|
-      task.owner_id = @owner_house.id
-      task.save
-    end
-    @tasks = Task.where(assignee_id: current_user.id)
-    @tasks.each do |task|
-      task.assignee_id = nil
-      task.unassign
-      task.save
-    end
-    # current_user.unassign_tasks
+    current_user.change_ownership_tasks
+    current_user.unassign_tasks
     current_user.house_id = nil
     respond_to do |format|
       if current_user.save
@@ -79,23 +67,6 @@ class HousesController < ApplicationController
       format.js
     end
   end
-
-  # def change_ownership_tasks
-  #   @tasks = Task.where(owner_id: current_user.id)
-  #   @owner_house = User.find_by(owner: true, house_id: current_user.house_id)
-  #   @tasks.each do |task|
-  #     task.owner_id = @owner_house.id
-  #     task.save
-  #   end
-  # end
-
-  # def unassign_tasks
-  #   @tasks = Task.where(assignee_id: current_user.id)
-  #   @tasks.each do |task|
-  #     task.assignee_id = nil
-  #     task.save
-  #   end
-  # end
 
   private
 

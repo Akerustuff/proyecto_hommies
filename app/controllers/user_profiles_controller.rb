@@ -3,7 +3,7 @@
 class UserProfilesController < ApplicationController
   def show
     @profile = current_user
-    @my_pending_tasks = current_user.pending_tasks
+    @my_pending_tasks = current_user.user_pending_tasks
   end
 
   def edit; end

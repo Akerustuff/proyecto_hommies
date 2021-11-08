@@ -17,7 +17,24 @@ class User < ApplicationRecord
     first_name
   end
 
-  def pending_tasks
+  def user_pending_tasks
     assigned_tasks.assigned
+  end
+
+  def change_ownership_tasks
+    tasks = Task.where(owner_id: id)
+    owner_house = User.find_by(owner: true, house_id: house_id)
+    tasks.each do |task|
+      task.owner_id = owner_house.id
+      task.save
+    end
+  end
+
+  def unassign_tasks
+    tasks = Task.where(assignee_id: id)
+    tasks.each do |task|
+      task.assignee_id = nil
+      task.save
+    end
   end
 end
