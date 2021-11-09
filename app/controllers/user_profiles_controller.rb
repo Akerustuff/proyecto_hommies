@@ -29,6 +29,6 @@ class UserProfilesController < ApplicationController
   end
 
   def user_profile_params
-    params.permit(:first_name, :last_name)
+    params.permit(:first_name, :last_name, :birthdate)
   end
 end
