@@ -12,6 +12,18 @@ class House < ApplicationRecord
     house.tasks.where(aasm_state: %w[created assigned])
   end
 
+  def close_house
+    users = User.where(house_id: id)
+    users.each do |user|
+      user.house_id = nil
+      user.save
+    end
+  end
+
+  def house_members
+    User.where(house_id: id)
+  end
+
   private
 
   def generate_code

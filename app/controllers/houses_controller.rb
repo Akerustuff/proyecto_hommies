@@ -68,6 +68,25 @@ class HousesController < ApplicationController
     end
   end
 
+  def destroy
+    if current_user.owner?
+      @house = House.find_by(id: current_user.house_id)
+      @house.close_house
+      current_user.owner = false
+      current_user.save
+      @house.destroy
+      respond_to do |format|
+        format.html { redirect_to landing_index_path, notice: 'La casa ha sido eliminada.' }
+        format.json { head :no_content }
+      end
+    else
+      respond_to do |format|
+        format.html { redirect_to user_profile_path, notice: 'No eres el dueño de la casa.' }
+        format.json { head :no_content }
+      end
+    end
+  end
+
   private
 
   def house_params
