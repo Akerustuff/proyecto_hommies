@@ -1,6 +1,7 @@
 <h1>Editing Profile</h1>
+<%# <%= form_for(@profile, :url => {:action => 'update', :id => @profile.id}) do |f| %>
+  <%= render 'form', user: @profile %>
+<%# <% end %>
 
-<%= render 'form', profile: @profile %>
-
-<%= link_to 'Show', user_profile_path %> |
-<%= link_to 'Back', user_profile_path %>
+<%= link_to 'Ver', user_profile_path %> |
+<%= link_to 'Regresar', user_profile_path %>

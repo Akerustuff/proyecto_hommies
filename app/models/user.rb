@@ -7,6 +7,7 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :validatable
 
   belongs_to :house, optional: true
+  has_one_attached :avatar
   has_many :owned_tasks, class_name: 'Task', foreign_key: 'owner_id', dependent: nil, inverse_of: :owner
   has_many :assigned_tasks, class_name: 'Task', foreign_key: 'assignee_id', dependent: nil, inverse_of: :assignee
   has_many :reviewed_tasks, class_name: 'Task', foreign_key: 'reviewer_id', dependent: nil, inverse_of: :reviewer
@@ -36,5 +37,9 @@ class User < ApplicationRecord
       task.assignee_id = nil
       task.save
     end
+  end
+
+  def avatar_photo
+    avatar.variant(resize: '200x200')
   end
 end

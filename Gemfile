@@ -12,6 +12,7 @@ gem 'aasm'
 gem 'after_commit_everywhere', '~> 1.0'
 gem 'devise'
 gem 'dotenv-rails'
+gem 'mini_magick'
 # Use postgresql as the database for Active Record
 gem 'pg', '>= 0.18', '< 2.0'
 # Use Puma as the app server

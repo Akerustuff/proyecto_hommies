@@ -1,19 +1,19 @@
 # frozen_string_literal: true
 
 class UserProfilesController < ApplicationController
+  before_action :set_user_profile, only: %i[show edit update]
+
   def show
-    @profile = current_user
-    @my_pending_tasks = current_user.user_pending_tasks
-    @house = House.find_by(id: current_user.house_id)
+    @my_pending_tasks = @profile.user_pending_tasks
+    @house = House.find_by(id: @profile.house_id)
     @house_members = @house.house_members
   end
 
   def edit; end
 
   def update
-    current_user
     respond_to do |format|
-      if current_user.update(user_profile_params)
+      if @profile.update(user_profile_params)
         format.html { redirect_to user_profile_path, notice: 'El perfil ha sido actualizado' }
         format.json { render :show, status: :ok, location: user_profile_path }
       else
@@ -49,6 +49,6 @@ class UserProfilesController < ApplicationController
   end
 
   def user_profile_params
-    params.permit(:first_name, :last_name, :birthdate)
+    params.permit(:first_name, :last_name, :birthdate, :avatar)
   end
 end
