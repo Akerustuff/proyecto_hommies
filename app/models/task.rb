@@ -7,6 +7,8 @@ class Task < ApplicationRecord
   belongs_to :owner, class_name: 'User', inverse_of: :owned_tasks
   belongs_to :assignee, class_name: 'User', inverse_of: :assigned_tasks, optional: true
   belongs_to :reviewer, class_name: 'User', inverse_of: :reviewed_tasks, optional: true
+  has_many :comments, dependent: :destroy
+  has_many :ccomenting_users, { through: :comments, source: :user }
 
   aasm do
     state :created, initial: true

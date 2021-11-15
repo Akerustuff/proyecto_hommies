@@ -26,6 +26,19 @@
   <strong>Asignado a:</strong>
   <%= @task.assignee.nil? ? 'Sin asignar' : @task.assignee %>
 </p>
+
+<div>
+<h4>Comentarios</h4>
+</div>
+<div>
+<% @comments.each do |comment|%>
+  <div>
+    <%= image_tag(comment.user.avatar_photo) %>
+    <%= comment.content %>
+    <% end %>
+  </div>
+</div>
+
 <% if @task.owner_id == current_user.id %>
   <%= link_to 'Editar', edit_task_path(@task) %> |
   <%= link_to 'Eliminar', @task, method: :delete, data: { confirm: 'Estás seguro de eliminar la tarea?' } %> |

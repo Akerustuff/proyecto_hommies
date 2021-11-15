@@ -8,7 +8,9 @@ class TasksController < ApplicationController
     @tasks = @house.house_pending_tasks(current_user)
   end
 
-  def show; end
+  def show
+    @comments = Comment.where(task_id: @task.id)
+  end
 
   def new
     @users = User.where(house_id: current_user.house_id)
