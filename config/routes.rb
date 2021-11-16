@@ -1,6 +1,11 @@
 # frozen_string_literal: true
 
 Rails.application.routes.draw do
+  get 'comments/new'
+  get 'comments/create'
+  get 'comments/edit'
+  get 'comments/update'
+  get 'comments/destroy'
   # Users routes
   resource :user_profile, only: %i[show edit update]
   get '/take_out_user/:id', to: 'user_profiles#take_out_user', as: 'take_out_user'

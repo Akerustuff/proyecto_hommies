@@ -33,11 +33,17 @@
 <div>
 <% @comments.each do |comment|%>
   <div>
-    <%= image_tag(comment.user.avatar_photo) %>
+    <%= image_tag(comment.user.thumbnail_photo) %>
+    <%= comment.user.first_name %>
+    <hr/>
     <%= comment.content %>
+    <hr/>
+    <%= comment.created_at %>
+    <hr/>
     <% end %>
   </div>
 </div>
+  <%= paginate @comments %>
 
 <% if @task.owner_id == current_user.id %>
   <%= link_to 'Editar', edit_task_path(@task) %> |

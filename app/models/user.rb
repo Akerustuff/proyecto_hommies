@@ -18,6 +18,12 @@ class User < ApplicationRecord
 
   validates :first_name, :last_name, presence: true
 
+  before_create do
+    file_path = 'app/assets/images/default_avatar.png'
+    file_name = 'default_avatar.png'
+    avatar.attach(io: File.open(file_path), filename: file_name) unless avatar.attached?
+  end
+
   def to_s
     first_name
   end
@@ -43,15 +49,11 @@ class User < ApplicationRecord
     end
   end
 
-  def grab_image
-    default_avatar = open('https://www.pngall.com/wp-content/uploads/5/User-Profile-PNG-Clipart.png')
-    filename = 'default_avatar.png'
-    avatar.attach(io: default_avatar, filename: filename)
+  def avatar_photo
+    avatar.variant(resize: '100x100')
   end
 
-  def avatar_photo
-    grab_image unless avatar.attached?
-
-    avatar.variant(resize: '200x200')
+  def thumbnail_photo
+    avatar.variant(resize: '50x50')
   end
 end
