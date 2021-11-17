@@ -10,15 +10,17 @@ class CommentsController < ApplicationController
   end
 
   def create
+    @task = Task.find_by(params[:id])
     @comment = Comment.new(comment_params)
-    @comment.user_id = current_user
+    @comment.user_id = current_user.id
+    @comment.task_id = @task.id
     respond_to do |format|
       if @comment.save
-        format.html { redirect_to @house, notice: 'El comentario fue creado con éxito.' }
-        format.json { render :show, status: :created, location: @house }
+        format.html { redirect_to @task, notice: 'El comentario fue creado con éxito.' }
+        # format.json { render :show, status: :created, location: @task }
       else
-        format.html { render :new, status: :unprocessable_entity }
-        format.json { render json: @house.errors, status: :unprocessable_entity }
+        format.html { redirect_to @task, status: :unprocessable_entity }
+        # format.json { render json: @house.errors, status: :unprocessable_entity }
       end
       format.js
     end

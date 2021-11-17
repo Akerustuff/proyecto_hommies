@@ -9,7 +9,8 @@ class TasksController < ApplicationController
   end
 
   def show
-    @comments = Comment.where(task_id: @task.id).order(:created_at).page params[:page]
+    @comments = Comment.where(task_id: @task.id).order('created_at DESC').page params[:page]
+    @comment = Comment.new
   end
 
   def new

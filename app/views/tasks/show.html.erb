@@ -31,6 +31,8 @@
 <h4>Comentarios</h4>
 </div>
 <div>
+  <%= render 'comments/form', comment: @comment %>
+
 <% @comments.each do |comment|%>
   <div>
     <%= image_tag(comment.user.thumbnail_photo) %>
