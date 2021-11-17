@@ -12,9 +12,12 @@ class User < ApplicationRecord
   belongs_to :house, optional: true
   has_many :comments, dependent: :destroy
   has_many :commented_tasks, { through: :comments, source: :task }
-  has_many :owned_tasks, class_name: 'Task', foreign_key: 'owner_id', dependent: nil, inverse_of: :owner
-  has_many :assigned_tasks, class_name: 'Task', foreign_key: 'assignee_id', dependent: nil, inverse_of: :assignee
-  has_many :reviewed_tasks, class_name: 'Task', foreign_key: 'reviewer_id', dependent: nil, inverse_of: :reviewer
+  has_many :owned_tasks, class_name: 'Task', foreign_key: 'owner_id',
+                         dependent: nil, inverse_of: :owner
+  has_many :assigned_tasks, class_name: 'Task', foreign_key: 'assignee_id',
+                            dependent: nil, inverse_of: :assignee
+  has_many :reviewed_tasks, class_name: 'Task', foreign_key: 'reviewer_id',
+                            dependent: nil, inverse_of: :reviewer
 
   validates :first_name, :last_name, presence: true
 
