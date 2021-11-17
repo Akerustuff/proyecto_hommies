@@ -7,6 +7,9 @@ class House < ApplicationRecord
   has_many :tasks, dependent: :destroy
   validates :name, presence: true
 
+  # Validación de soft delete
+  acts_as_paranoid
+
   def house_pending_tasks(current_user)
     house = House.find_by(id: current_user.house_id)
     house.tasks.where(aasm_state: %w[created assigned])

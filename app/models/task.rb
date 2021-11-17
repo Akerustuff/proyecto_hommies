@@ -32,6 +32,8 @@ class Task < ApplicationRecord
   end
 
   validates :name, :description, :category, :limit_date, presence: true
-
-  enum category: { 'Limpieza' => 0, 'Cocina' => 1, 'Compras' => 2 }
+  # Validación de soft delete
+  acts_as_paranoid
+  # Enum de categorías de tareas
+  enum category: { 'Limpieza' => 0, 'Cocina' => 1, 'Compras' => 2, 'Mascota' => 3 }
 end

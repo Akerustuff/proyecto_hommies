@@ -26,3 +26,11 @@ Task.create(
    { name: 'Mercado de frutas', description: 'frutas de estación', category: 2, limit_date: '2021-12-1', finished_date: nil, approved_date: nil, house_id: 3, owner_id: 4, assignee_id: 5, reviewer_id: nil },
    { name: 'Compras de limpieza', description: 'comprar cloro y desinfectante', category: 2, limit_date: '2021-12-2', finished_date: nil, approved_date: nil, house_id: 3, owner_id: 5, assignee_id: 5, reviewer_id: nil }]
 )
+
+Comment.create(
+  [{ content: 'Recuerda barrer la oficina', user_id: 1, task_id: 1 },
+   { content: 'Barrí la oficina ayer', user_id: 2, task_id: 1 },
+   { content: 'Cierto, lo habia olvidado', user_id: 3, task_id: 1 },
+   { content: 'Compra manzanas', user_id: 4, task_id: 6 },
+   { content: 'vale, las compro mañana', user_id: 5, task_id: 6 }]
+)

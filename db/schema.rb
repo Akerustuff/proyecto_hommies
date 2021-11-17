@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_11_13_150949) do
+ActiveRecord::Schema.define(version: 2021_11_17_001633) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -42,6 +42,8 @@ ActiveRecord::Schema.define(version: 2021_11_13_150949) do
     t.bigint "task_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.datetime "deleted_at"
+    t.index ["deleted_at"], name: "index_comments_on_deleted_at"
     t.index ["task_id"], name: "index_comments_on_task_id"
     t.index ["user_id"], name: "index_comments_on_user_id"
   end
@@ -62,6 +64,8 @@ ActiveRecord::Schema.define(version: 2021_11_13_150949) do
     t.string "code"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.datetime "deleted_at"
+    t.index ["deleted_at"], name: "index_houses_on_deleted_at"
   end
 
   create_table "tasks", force: :cascade do |t|
@@ -78,7 +82,9 @@ ActiveRecord::Schema.define(version: 2021_11_13_150949) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.string "aasm_state"
+    t.datetime "deleted_at"
     t.index ["assignee_id"], name: "index_tasks_on_assignee_id"
+    t.index ["deleted_at"], name: "index_tasks_on_deleted_at"
     t.index ["house_id"], name: "index_tasks_on_house_id"
     t.index ["owner_id"], name: "index_tasks_on_owner_id"
     t.index ["reviewer_id"], name: "index_tasks_on_reviewer_id"

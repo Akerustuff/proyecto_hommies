@@ -14,6 +14,7 @@ gem 'devise'
 gem 'dotenv-rails'
 gem 'kaminari'
 gem 'mini_magick'
+gem 'paranoia', '~> 2.2'
 # Use postgresql as the database for Active Record
 gem 'pg', '>= 0.18', '< 2.0'
 # Use Puma as the app server
