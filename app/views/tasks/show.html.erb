@@ -40,6 +40,10 @@
     <hr/>
     <%= comment.content %>
     <hr/>
+    <% (0...comment.images.count).each do |image| %>
+    <%= image_tag(comment.comment_image_style(image)) %>
+    <% end %>
+    <hr/>
     <%= comment.created_at %>
     <hr/>
     <%= link_to 'Eliminar', comment, method: :delete, data: { confirm: 'Estás seguro de eliminar el comentario?' } %>
