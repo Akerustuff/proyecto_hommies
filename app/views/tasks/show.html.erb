@@ -42,6 +42,7 @@
     <hr/>
     <%= comment.created_at %>
     <hr/>
+    <%= link_to 'Eliminar', comment, method: :delete, data: { confirm: 'Estás seguro de eliminar el comentario?' } %>
     <% end %>
   </div>
 </div>

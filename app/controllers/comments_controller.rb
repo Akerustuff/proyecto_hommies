@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 class CommentsController < ApplicationController
-  before_action :set_comment, only: %i[show edit update destroy]
+  before_action :set_comment, only: %i[destroy]
 
   def show; end
 
@@ -26,15 +26,18 @@ class CommentsController < ApplicationController
     end
   end
 
-  def edit; end
-
-  def update; end
-
-  def destroy; end
+  def destroy
+    @task = @comment.task
+    @comment.destroy
+    respond_to do |format|
+      format.html { redirect_to @task, notice: 'La tarea ha sido eliminada.' }
+      format.json { head :no_content }
+    end
+  end
 
   private
 
-  def set_user_profile
+  def set_comment
     @comment = Comment.find(params[:id])
   end
 

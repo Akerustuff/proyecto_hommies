@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 Rails.application.routes.draw do
-  resources :comments
+  resources :comments, only: %i[new create destroy]
   # Users routes
   resource :user_profile, only: %i[show edit update]
   get '/take_out_user/:id', to: 'user_profiles#take_out_user', as: 'take_out_user'
