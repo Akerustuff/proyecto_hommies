@@ -27,6 +27,23 @@
   <%= @task.assignee.nil? ? 'Sin asignar' : @task.assignee %>
 </p>
 
+<p>
+  <strong>Estado de la tarea: </strong>
+    <%= 'Sin asignar' if @task.created?%>
+    <%= 'Asignada' if @task.assigned?%>
+    <%= 'Por aprobar' if @task.finished?%>
+    <%= 'Aprobada' if @task.approved?%>
+</p>
+
+<div>
+<% if @task.assigned? && current_user.id == @task.assignee_id %>
+  <%= link_to 'Finalizar Tarea', finish_task_path(id: @task.id) %>
+<% elsif @task.finished? && current_user.id != @task.assignee_id %>
+  <%= link_to 'Aprobar Tarea', approve_task_path(id: @task.id) %>
+  <%= link_to 'Rechazar Tarea', reject_task_path(id: @task.id) %>
+<% end %>
+</div>
+
 <div>
 <h4>Comentarios</h4>
 </div>

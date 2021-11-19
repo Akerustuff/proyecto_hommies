@@ -18,5 +18,8 @@ Rails.application.routes.draw do
   get 'leave_house', to: 'houses#leave_house'
   # Task routes
   resources :tasks
+  get 'finish_task/:id', to: 'tasks#finish_task', as: 'finish_task'
+  get 'reject_task/:id', to: 'tasks#reject_task', as: 'reject_task'
+  get 'approve_task/:id', to: 'tasks#approve_task', as: 'approve_task'
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end

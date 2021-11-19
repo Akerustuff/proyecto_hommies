@@ -29,6 +29,9 @@ class Task < ApplicationRecord
     event :approve do
       transitions from: :finished, to: :approved
     end
+    event :reject do
+      transitions from: :finished, to: :assigned
+    end
   end
 
   validates :name, :description, :category, :limit_date, presence: true
