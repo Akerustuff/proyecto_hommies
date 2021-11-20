@@ -10,9 +10,9 @@ class House < ApplicationRecord
   # Validación de soft delete
   acts_as_paranoid
 
-  def house_pending_tasks(current_user)
+  def house_tasks(current_user)
     house = House.find_by(id: current_user.house_id)
-    house.tasks.where(aasm_state: %w[created assigned])
+    house.tasks.where(aasm_state: %w[created assigned finished])
   end
 
   def close_house

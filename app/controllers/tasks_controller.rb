@@ -1,11 +1,11 @@
 # frozen_string_literal: true
 
 class TasksController < ApplicationController
-  before_action :set_task, only: %i[show edit update destroy]
+  before_action :set_task, only: %i[show edit update destroy finish_task approve_task reject_task]
 
   def index
     @house = House.find_by(id: current_user.house_id)
-    @tasks = @house.house_pending_tasks(current_user)
+    @tasks = @house.house_tasks(current_user)
   end
 
   def show
@@ -59,6 +59,33 @@ class TasksController < ApplicationController
     respond_to do |format|
       format.html { redirect_to house_path(@house), notice: 'La tarea ha sido eliminada.' }
       format.json { head :no_content }
+    end
+  end
+
+  def finish_task
+    @task.finish
+    @task.finished_date = Time.current
+    @task.save
+    respond_to do |format|
+      format.html { redirect_to @task, notice: 'Has finalizado la tarea.' }
+    end
+  end
+
+  def reject_task
+    @task.reject
+    @task.finished_date = nil
+    @task.save
+    respond_to do |format|
+      format.html { redirect_to @task, notice: 'Has rechazado la tarea.' }
+    end
+  end
+
+  def approve_task
+    @task.approve
+    @task.approved_date = Time.current
+    @task.save
+    respond_to do |format|
+      format.html { redirect_to @task, notice: 'Has aprobado la tarea.' }
     end
   end
 
