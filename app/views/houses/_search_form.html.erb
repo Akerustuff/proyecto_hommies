@@ -1,0 +1,10 @@
+<%= search_form_for @q, url: house_path(@house) do |f| %>
+
+  <%= f.label :aasm_state_eq, 'Tareas según su Estado' %>
+  <%= f.select(:aasm_state_eq, options_for_select([['Por asignar', :created], ['Asignado', :assigned],
+                                                   ['Finalizado', :finished], ['Aprobado', :approved]]), {:include_blank => 'Todos'}) %>
+  <%= f.submit 'Buscar'%>
+  <% end %>
+
+    <%# Estableceré estos arreglos estaticos para el MPV [['Por asignar', :created], ['Asignado', :assigned], ['Finalizado', :finished], ['Aprobado', :approved]]
+     Mejorar para la siguiente version Task.aasm.states.map(&:name)%>
