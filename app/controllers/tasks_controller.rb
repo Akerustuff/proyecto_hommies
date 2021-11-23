@@ -6,6 +6,8 @@ class TasksController < ApplicationController
   def index
     @house = House.find_by(id: current_user.house_id)
     @tasks = @house.house_tasks(current_user)
+    @q = @house.house_tasks(current_user).ransack(params[:q])
+    @tasks = @q.result(distinct: true)
   end
 
   def show

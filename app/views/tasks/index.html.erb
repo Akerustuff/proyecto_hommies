@@ -1,11 +1,12 @@
 <h1>Listado de tareas</h1>
 
+<%= render 'houses/search_form.html.erb' %>
 <div>
   <%= link_to 'Nueva tarea', new_task_path %>
 </div>
 <table>
   <tr>
-    <th>Nombre</th>
+    <th><%= sort_link(@q, :name, "Nombre", default_order: :asc)%></th>
     <th>Descripción</th>
     <th>Categoria</th>
     <th>Fecha limite</th>

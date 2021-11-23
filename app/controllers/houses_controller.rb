@@ -2,14 +2,15 @@
 
 class HousesController < ApplicationController
   skip_before_action :redirect_if_no_house, only: %i[new create join join_house]
+  before_action :set_house, only: %i[show]
 
   def new
     @house = House.new
   end
 
   def show
-    @house = House.find_by(id: params[:id])
-    @house_pending_tasks = @house.house_pending_tasks(current_user)
+    @q = @house.house_tasks(current_user).ransack(params[:q])
+    @house_tasks = @q.result(distinct: true)
   end
 
   def create
@@ -89,7 +90,11 @@ class HousesController < ApplicationController
 
   private
 
+  def set_house
+    @house = House.find(params[:id])
+  end
+
   def house_params
-    params.require(:house).permit(:name, :code)
+    params.require(:house).permit(:name, :code, :q)
   end
 end
