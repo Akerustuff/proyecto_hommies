@@ -9,6 +9,7 @@ ruby '2.6.3'
 gem 'rails', '~> 5.2.3'
 
 gem 'aasm'
+gem 'activeadmin'
 gem 'after_commit_everywhere', '~> 1.0'
 gem 'devise'
 gem 'dotenv-rails'

@@ -1,6 +1,7 @@
 # frozen_string_literal: true
 
 Rails.application.routes.draw do
+  ActiveAdmin.routes(self)
   resources :comments, only: %i[new create destroy]
   # Users routes
   resource :user_profile, only: %i[show edit update]

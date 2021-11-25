@@ -14,6 +14,10 @@ class ApplicationController < ActionController::Base
     redirect_to landing_index_path if user_signed_in? && current_user.house_id.nil?
   end
 
+  def authenticate_admin!
+    redirect_to root_path, alert: 'No eres un administrador' unless current_user.admin?
+  end
+
   def configure_permitted_parameters
     devise_parameter_sanitizer.permit(:sign_up,
                                       keys: %i[first_name last_name owner birthdate avatar])

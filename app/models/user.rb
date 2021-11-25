@@ -20,6 +20,8 @@ class User < ApplicationRecord
                             dependent: nil, inverse_of: :reviewer
 
   validates :first_name, :last_name, presence: true
+  # Validación de soft delete
+  acts_as_paranoid
 
   before_create do
     file_path = 'app/assets/images/default_avatar.png'
