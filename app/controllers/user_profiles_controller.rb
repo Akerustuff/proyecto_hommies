@@ -49,6 +49,10 @@ class UserProfilesController < ApplicationController
   end
 
   def user_profile_params
-    params.permit(:first_name, :last_name, :birthdate, :avatar)
+    params.require(:user).permit(:first_name, :last_name, :birthdate, :avatar)
   end
 end
+
+# <ActionController::Parameters {"utf8"=>"✓", "_method"=>"put", "authenticity_token"=>"if9zZl/msxF+jlH/jPZGmT72Gv7wH6qXyltTjdKFSunYpDxXZiAQjsg5lvswWvyi1k3rhnJxJVPdUZvTZ3GwdA==", 
+#   "user"=>{"first_name"=>"henrysss", "last_name"=>"cavill", "birthdate(1i)"=>"2021", "birthdate(2i)"=>"11", "birthdate(3i)"=>"26", "avatar"=>""}, 
+#   "commit"=>"Guardar", "id"=>"2", "controller"=>"user_profiles", "action"=>"update"} permitted: false>
