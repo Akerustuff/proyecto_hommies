@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 ActiveAdmin.register User do
-  actions :all
+  actions :all, except: %i[destroy]
 
   action_item :reset_user, only: :show do
     link_to 'Reset User', reset_user_admin_user_path(user), method: :get

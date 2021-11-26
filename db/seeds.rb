@@ -14,7 +14,7 @@ User.create(
   [{ email: 'admin@gmail.com', password: '123456', password_confirmation: '123456',
      first_name: 'Admin', last_name: 'admin', owner: true, birthdate: '1989-11-21', house_id: 1, admin: true },
    { email: 'kelvis@gmail.com', password: '123456', password_confirmation: '123456',
-     first_name: 'Kelvis', last_name: 'Alvarez', owner: true, birthdate: '1989-11-21', house_id: 2, admin: true },
+     first_name: 'Kelvis', last_name: 'Alvarez', owner: true, birthdate: '1989-11-21', house_id: 2 },
    { email: 'jorge@gmail.com',  password: '123456', password_confirmation: '123456',
      first_name: 'Jorge', last_name: 'Nehmer', owner: false, birthdate: '1988-01-06', house_id: 2 },
    { email: 'david@gmail.com',  password: '123456', password_confirmation: '123456',

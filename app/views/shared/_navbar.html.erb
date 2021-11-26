@@ -11,6 +11,10 @@
           <%= link_to 'Cerrar sesión', destroy_user_session_path, method: :get, class: 'nav_link' %>
         <li class="nav-item mr-4">
           <%= link_to 'Mi perfil', user_profile_path, class: 'nav_link'%>
+          <% if current_user.admin?%>
+            <li class="nav-item mr-4">
+            <%= link_to 'Panel de control', admin_dashboard_path, class: 'nav_link'%>
+          <% end %>
       <% else %>
         <li class="nav-item mr-4">
           <%= link_to 'Registrate', new_user_registration_path, class:'nav_link' %>
