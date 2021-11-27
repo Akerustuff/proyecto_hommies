@@ -8,7 +8,7 @@ Rails.application.routes.draw do
   get '/take_out_user/:id', to: 'user_profiles#take_out_user', as: 'take_out_user'
   put '/edit_ajax', to: 'user_profiles#edit_ajax', as: 'edit_ajax'
 
-  devise_for :users
+  devise_for :users, controllers: { omniauth_callbacks: 'omniauth_callbacks' }
 
   # Landing route
   get 'landing/index'

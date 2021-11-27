@@ -4,9 +4,9 @@ require 'open-uri'
 
 class User < ApplicationRecord
   # Include default devise modules. Others available are:
-  # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
+  # :confirmable, :lockable, :validatable, :timeoutable, :trackable and :omniauthable
   devise :database_authenticatable, :registerable,
-         :recoverable, :rememberable, :validatable
+         :recoverable, :rememberable, :omniauthable, omniauth_providers: [:google_oauth2]
 
   has_one_attached :avatar
   belongs_to :house, optional: true
