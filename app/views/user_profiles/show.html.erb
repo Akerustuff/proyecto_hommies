@@ -1,19 +1,35 @@
 <div>
   <%= image_tag(@profile.avatar_photo) %>
+  <%= link_to 'editar foto', edit_user_profile_path %>
 </div>
 <div>
-  <h4>nombre: <%= @profile.first_name%></h4>
+  Nombre:
+  <span id ='first_name'>
+    <%= @profile.first_name%>
+  </span>
 </div>
 <div>
-  <h4>Apellido: <%= @profile.last_name%></h4>
-  <div>
-  <h4>Fecha de nacimiento: <%= @profile.birthdate%></h4>
+  Apellido:
+  <span id ='last_name'>
+    <%= @profile.last_name%>
+  </span>
 </div>
+<div>
+  Fecha de nacimiento:
+  <span id ='birthdate'>
+    <%= @profile.birthdate%>
+  </span>
 </div>
+
 <div>
   <h4>Casa: <%= @profile.house.name%></h4>
 <div>
-  <%= link_to 'editar perfil', edit_user_profile_path %>
+  <%# <%= link_to 'editar perfil', edit_user_profile_path %>
+  <%= button_tag 'editar perfil', type: 'button', data: { bs_toggle: 'modal', bs_target: '#editUserModal' } %>
+  <%# <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#editUserModal">
+  Launch demo modal
+</button>
+  <%= link_to 'editar perfil', '#', 'data-bs-toogle': 'modal', 'data-bs-target': '#editUserModal' %>
 </div>
 
 <% if @profile.owner? %>
@@ -88,4 +104,23 @@
 </div>
 <br>
 
+
+<!-- Modal -->
+<div class="modal fade" id="editUserModal" tabindex="-1" aria-labelledby="editUserModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="editUserModalLabel">Modal title</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div id="editUserForm" class="modal-body">
+        <%= render 'form', user: @profile %>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+        <button type="button" class="btn btn-primary" id="update_button" >Guardar</button>
+      </div>
+    </div>
+  </div>
+</div>
 

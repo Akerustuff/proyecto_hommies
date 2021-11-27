@@ -6,6 +6,8 @@ Rails.application.routes.draw do
   # Users routes
   resource :user_profile, only: %i[show edit update]
   get '/take_out_user/:id', to: 'user_profiles#take_out_user', as: 'take_out_user'
+  put '/edit_ajax', to: 'user_profiles#edit_ajax', as: 'edit_ajax'
+
   devise_for :users
 
   # Landing route

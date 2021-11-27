@@ -1,7 +1,9 @@
 # frozen_string_literal: true
 
 class UserProfilesController < ApplicationController
-  before_action :set_user_profile, only: %i[show edit update]
+  before_action :set_user_profile, only: %i[show edit update edit_ajax]
+  skip_before_action :authenticate_user!, only: %i[edit_ajax]
+  skip_before_action :verify_authenticity_token, only: %i[edit_ajax]
 
   def show
     @my_pending_tasks = @profile.user_pending_tasks
@@ -35,9 +37,24 @@ class UserProfilesController < ApplicationController
         # format.json { render :show, status: :created, location: @house }
       else
         format.html { redirect_to user_profile_path, status: :unprocessable_entity }
-        # format.json { render json: @house.errors, status: :unprocessable_entity }
+        # format.json { render(json: @house.errors, status: :unprocessable_entity }
       end
       format.js
+    end
+  end
+
+  def edit_ajax
+    birthdate_string = "#{params[:year_birthdate]}-#{params[:month_birthdate]}-#{params[:day_birthdate]}"
+    birthdate = birthdate_string.to_datetime
+    if @profile.update({ first_name: params[:first_name], last_name: params[:last_name], birthdate: birthdate })
+      response = {
+        first_name: @profile.first_name,
+        last_name: @profile.last_name,
+        birthdate: @profile.birthdate
+      }
+      render json: response, status: :ok
+    else
+      render json: { message: 'Ha ocurrido un error, intente de nuevo' }, status: :error
     end
   end
 
@@ -50,5 +67,9 @@ class UserProfilesController < ApplicationController
 
   def user_profile_params
     params.require(:user).permit(:first_name, :last_name, :birthdate, :avatar)
+  end
+
+  def update_profile_params
+    params.permit(:first_name, :last_name)
   end
 end
