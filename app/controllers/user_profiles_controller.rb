@@ -2,7 +2,6 @@
 
 class UserProfilesController < ApplicationController
   before_action :set_user_profile, only: %i[show edit update edit_ajax]
-  skip_before_action :authenticate_user!, only: %i[edit_ajax]
   skip_before_action :verify_authenticity_token, only: %i[edit_ajax]
 
   def show

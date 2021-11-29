@@ -24,9 +24,10 @@ class TasksController < ApplicationController
     @task.owner_id = current_user.id
     @task.house_id = current_user.house_id
     @task.assign unless @task.assignee_id.nil?
+    send_email
     respond_to do |format|
       if @task.save
-        format.html { redirect_to @task, notice: 'La tarea fue creada con èxito.' }
+        format.html { redirect_to @task, notice: 'La tarea fue creada con éxito.' }
         # format.json { render :show, status: :created, location: @task }
       else
         format.html { render :new, status: :unprocessable_entity }
@@ -90,6 +91,19 @@ class TasksController < ApplicationController
     end
   end
 
+  def send_email
+    from = SendGrid::Email.new(email: 'kelvis.alvarez20@gmail.com')
+    to = SendGrid::Email.new(email: @task.assignee.email)
+    subject = 'Se te ha asignado una nueva tarea'
+    content = SendGrid::Content.new(type: 'text/plain',
+                                    value: 'Se ha creado una nueva tarea y ha sido asignada a ti, vamos a trabajar!')
+    mail = SendGrid::Mail.new(from, subject, to, content)
+    sg = SendGrid::API.new(api_key: ENV['SENDGRID_API_KEY'])
+    response = sg.client.mail._('send').post(request_body: mail.to_json)
+    Rails.logger.debug response.status_code
+    Rails.logger.debug response.headers
+  end
+
   private
 
   def set_task
@@ -99,13 +113,5 @@ class TasksController < ApplicationController
   def create_params
     params.require(:task).permit(:name, :description, :category, :limit_date, :owner_id,
                                  :assignee_id)
-  end
-
-  def finish_params
-    params.require(:task).permit(:finished_date)
-  end
-
-  def approve_params
-    params.require(:task).permit(:approved_date, :reviewer_id)
   end
 end
