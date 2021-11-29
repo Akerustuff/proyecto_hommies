@@ -1,6 +1,6 @@
-<h1>Editing Profile</h1>
+<h1>Edita tu foto</h1>
 <%= form_for(@profile, :url => {:action => 'update', :id => @profile.id}, :html=> {:multipart => true }) do |f| %>
-  <%= render 'form', user: @profile %>
+  <%= render 'form_photo', user: @profile %>
 <% end %>
 
 <%= link_to 'Ver', user_profile_path %> |

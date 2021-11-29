@@ -1,0 +1,11 @@
+ <%= form_with(model: @profile, url: user_profile_path, method: :put, local: true, multipart: true) do |f| %>
+
+<div class="field">
+    <%= f.label :avatar, "Selecciona una foto: "%><br />
+    <%= f.file_field :avatar %>
+  </div>
+
+  <div class="actions">
+    <%= f.submit "Guardar" %>
+  </div>
+<% end %>
