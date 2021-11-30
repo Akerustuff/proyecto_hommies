@@ -11,8 +11,9 @@ Rails.application.routes.draw do
   devise_for :users, controllers: { omniauth_callbacks: 'omniauth_callbacks' }
 
   # Landing route
-  get 'landing/index'
-  root to: 'landing#index'
+  get 'landing/without_house'
+  get 'landing/landing_page'
+  root to: 'landing#landing_page'
 
   # House routes
   resources :houses, only: %i[new create show destroy]

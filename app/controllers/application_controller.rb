@@ -2,7 +2,7 @@
 
 class ApplicationController < ActionController::Base
   protect_from_forgery with: :exception
-  before_action :authenticate_user!
+  before_action :authenticate_user!, except: %i[landing_page without_house]
 
   before_action :configure_permitted_parameters, if: :devise_controller?
   before_action :redirect_if_no_house
@@ -11,12 +11,16 @@ class ApplicationController < ActionController::Base
   protected
 
   def redirect_if_no_house
-    redirect_to landing_index_path if user_signed_in? && current_user.house_id.nil?
+    redirect_to landing_without_house_path if user_signed_in? && current_user.house_id.nil?
   end
 
   def authenticate_admin!
-    redirect_to root_path, alert: 'No eres un administrador' unless current_user.admin?
+    redirect_to house_path(id: current_user.house_id), alert: 'No eres un administrador' unless current_user.admin?
   end
+
+  def landing_page; end
+
+  def without_house; end
 
   def configure_permitted_parameters
     devise_parameter_sanitizer.permit(:sign_up,

@@ -59,10 +59,10 @@ class HousesController < ApplicationController
     current_user.house_id = nil
     respond_to do |format|
       if current_user.save
-        format.html { redirect_to landing_index_path, notice: 'Has dejado la casa.' }
+        format.html { redirect_to landing_without_house_path, notice: 'Has dejado la casa.' }
         # format.json { render :show, status: :created, location: @house }
       else
-        format.html { redirect_to landing_index_path, status: :unprocessable_entity }
+        format.html { redirect_to landing_without_house_path, status: :unprocessable_entity }
         # format.json { render json: @house.errors, status: :unprocessable_entity }
       end
       format.js
@@ -77,7 +77,7 @@ class HousesController < ApplicationController
       current_user.save
       @house.destroy
       respond_to do |format|
-        format.html { redirect_to landing_index_path, notice: 'La casa ha sido eliminada.' }
+        format.html { redirect_to landing_without_house_path, notice: 'La casa ha sido eliminada.' }
         format.json { head :no_content }
       end
     else
