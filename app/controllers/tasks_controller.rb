@@ -85,6 +85,7 @@ class TasksController < ApplicationController
   def approve_task
     @task.approve
     @task.approved_date = Time.current
+    @task.reviewer_id = current_user.id
     @task.save
     respond_to do |format|
       format.html { redirect_to @task, notice: 'Has aprobado la tarea.' }

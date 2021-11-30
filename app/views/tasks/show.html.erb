@@ -23,6 +23,10 @@
   <%= @task.owner %>
 </p>
 <p>
+  <strong>Aprobado por:</strong>
+  <%= @task.reviewer %>
+</p>
+<p>
   <strong>Asignado a:</strong>
   <%= @task.assignee.nil? ? 'Sin asignar' : @task.assignee %>
 </p>

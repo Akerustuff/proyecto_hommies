@@ -33,6 +33,10 @@ class User < ApplicationRecord
     first_name
   end
 
+  def my_tasks
+    Task.where(owner_id: id).or(Task.where(assignee_id: id)).or(Task.where(reviewer_id: id))
+  end
+
   def user_pending_tasks
     assigned_tasks.assigned
   end
