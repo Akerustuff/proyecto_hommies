@@ -7,14 +7,19 @@
 
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.1/css/all.css" integrity="sha384-gfdkjb5BdAXd+lj+gudLWI+BXq4IuLW5IT+brZEZsLFm++aCMlF1V92rMkPaX4PP" crossorigin="anonymous">
   </head>
 
   <body>
     <div>
       <%= render "shared/navbar"%>
     </div>
+    <% unless notice.nil? %>
     <p class="notice"><%= notice || params[:notice] %></p>
+    <% end %>
+    <% unless alert.nil? %>
     <p class="alert"><%= alert %></p>
+    <% end %>
     <%= yield %>
   </body>
 </html>

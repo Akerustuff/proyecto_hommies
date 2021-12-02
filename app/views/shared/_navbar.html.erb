@@ -17,9 +17,11 @@
                   <%= link_to 'Panel de control', admin_dashboard_path, class: 'dropdown-item'%>
                 </li>
               <% end %>
-              <li>
-                <%= link_to 'Mi perfil', user_profile_path, class: 'dropdown-item'%>
-              </li>
+              <% if current_user.house_id.present?%>
+                <li>
+                  <%= link_to 'Mi perfil', user_profile_path, class: 'dropdown-item'%>
+                </li>
+              <% end %>
               <li>
                 <%= link_to 'Cerrar sesión', destroy_user_session_path, method: :get, class: 'dropdown-item' %>
               </li>
