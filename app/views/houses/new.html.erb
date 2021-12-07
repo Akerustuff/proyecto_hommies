@@ -1,13 +1,20 @@
-<h2>Crear casa</h2>
-
-<%= form_with(model: @house, local: true)  do |f| %>
-
-  <div class="field">
-    <%= f.label :name %><br />
-    <%= f.text_field :name %>
+<div class="container-fluid new-house-top h-50">
+	<h2>Crear un casa nueva</h2>
+	<h4>Ingresa el nombre de tu nuevo hogar</h4>
+  <%= form_with(model: @house, local: true)  do |f| %>
+    <div class="form-control input_user p-0 mt-4">
+      <%= f.text_field :name, autofocus: true, placeholder: 'La Baticueva', class:"form-control input_user p-2 border-0" %>
+    </div>
+    <%= f.submit "Crear", class: "btn new-house-top-button p-2"%>
+  <% end %>
+    <h3 class="mt-5">Recuerda que al crear la casa tendrás privilegios especiales</h3>
+</div>
+<div class="container-fluid new-house-bottom h-50">
+  <div>
+    <p><span class="mt-2"><i class="fas fa-home fa-1x"></i>   Podrás darle el código de tu hogar a otros y formar una familia.</span></p>
+    <p><span class="mt-2"><i class="fas fa-home fa-1x"></i>   Podrás sacar a cualquier miembro de la casa.</span></p>
+    <p><span class="mt-2"><i class="fas fa-home fa-1x"></i>   Serás el único que podrá clausurar el casa que has creado.</span></p>
   </div>
+</div>
+<%= render "shared/footer" %>
 
-  <div class="actions">
-    <%= f.submit "Crear casa" %>
-  </div>
-<% end %>

@@ -8,14 +8,6 @@
   padding: 13%;
   text-align: center;
 }
-.blinker{
-  animation: blinker 1.5s linear infinite;
-}
-@keyframes blinker {
-  50% {
-  opacity: 0;
-  }
-}
 .home-main button{
   background: #fff;
   color: #5812c5;

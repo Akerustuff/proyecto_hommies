@@ -62,6 +62,10 @@ class User < ApplicationRecord
     avatar.variant(resize: '100x100')
   end
 
+  def edit_avatar_photo
+    avatar.variant(resize: '250x250')
+  end
+
   def thumbnail_photo
     avatar.variant(resize: '50x50')
   end

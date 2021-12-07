@@ -1,5 +1,23 @@
-<h1>Usuario autenticado sin casa</h1>
-
-<%= link_to 'Crear casa', new_house_path %>
-
-<%= link_to 'Unirse a una casa', join_path %>
+<div class="container-fluid whouse-main">
+	<h2>Bienvenido a My Hommies App</span></h2>
+	<h3>¿Qué deseas hacer?</h3>
+</div>
+<div class="container-fluid home-content1">
+	<div class="row">
+		<div class="col-md-6 content1-left d-flex flex-column justify-content-center">
+      <span class="d-flex justify-content-center"><i class="fas fa-home fa-7x"></i></span>
+			<h3 class="d-flex justify-content-center">Crear una nueva casa</h3>
+			<button type="button" class="btn whouse-main button p-2">
+        <%= link_to 'Crear', new_house_path, class: 'home-link text-white' %>
+      </button>
+		</div>
+		<div class="col-md-6 content1-left d-flex flex-column justify-content-center content1-right">
+			<span class="d-flex justify-content-center"><i class="fas fa-users fa-7x"></i></span>
+			<h3 class="d-flex justify-content-center">Unirte a una casa</h3>
+			<button type="button" class="btn whouse-main button p-2">
+        <%= link_to 'Unirte', join_path, class: 'home-link text-white' %>
+      </button>
+		</div>
+	</div>
+</div>
+<%= render "shared/footer" %>

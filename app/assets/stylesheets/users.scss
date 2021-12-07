@@ -122,3 +122,16 @@ body,
   .register-container{
   padding-top: 4em;
   }
+  // Editar usuario
+  .edit-photo-btn {
+    width: 50%;
+    background: #c0392b !important;
+    color: white !important;
+  }
+  .edit-photo-btn:focus {
+    box-shadow: none !important;
+    outline: 0px !important;
+  }
+  .edit-photo-container {
+    margin: 2% 15% 1%;
+  }
