@@ -1,33 +1,46 @@
-<h1>Listado de tareas</h1>
+<body style="background: #5812c5;">
+  <div class="container mb-4 h-100">
 
-<%= render 'tasks/search_form.html.erb' %>
-<div>
-  <%= link_to 'Nueva tarea', new_task_path %>
-</div>
-<table>
-  <tr>
-    <th><%= sort_link(@q, :name, "Nombre", default_order: :asc)%></th>
-    <th>Descripción</th>
-    <th>Categoria</th>
-    <th>Fecha limite</th>
-    <th>Fecha fin</th>
-    <th>Fecha de aprobacion</th>
-    <th>Asignado a</th>
-    <th>Creado por</th>
-    <th>Aprobado por</th>
-  </tr>
-  <% @tasks.each do |task|%>
-    <tr>
-    <td><%= task.name%></td>
-    <td><%= task.description%></td>
-    <td><%= task.category%></td>
-    <td><%= task.limit_date%></td>
-    <td><%= task.finished_date%></td>
-    <td><%= task.approved_date%></td>
-    <td><%= task.assignee%></td>
-    <td><%= task.owner%></td>
-    <td><%= task.reviewer%></td>
-    <td><%= link_to 'Ver', task %></td>
-    </tr>
-  <% end %>
-</table>
+    <h1 class="mt-5 task-text text-white">Listado de tareas</h1>
+    <div class="row">
+    <div class="col">
+      <%= render 'tasks/search_form.html.erb' %>
+    </div>
+    <div class="col d-flex align-self-start justify-content-end">
+      <button type="button" class="btn back-btn">
+        <%= link_to 'Nueva tarea', new_task_path,  class:"btn text-decoration-none text-white px-0 " %>
+      </button>
+    </div>
+    <div class="">
+
+
+      <table>
+        <tr>
+          <th><%= sort_link(@q, :name, "Nombre", default_order: :asc)%></th>
+          <th>Descripción</th>
+          <th>Categoria</th>
+          <th>Fecha limite</th>
+          <th>Fecha fin</th>
+          <th>Fecha de aprobacion</th>
+          <th>Asignado a</th>
+          <th>Creado por</th>
+          <th>Aprobado por</th>
+        </tr>
+        <% @tasks.each do |task|%>
+          <tr>
+          <td><%= task.name%></td>
+          <td><%= task.description%></td>
+          <td><%= task.category%></td>
+          <td><%= task.limit_date%></td>
+          <td><%= task.finished_date%></td>
+          <td><%= task.approved_date%></td>
+          <td><%= task.assignee%></td>
+          <td><%= task.owner%></td>
+          <td><%= task.reviewer%></td>
+          <td><%= link_to 'Ver', task %></td>
+          </tr>
+        <% end %>
+      </table>
+    </div>
+  </div>
+</body>
