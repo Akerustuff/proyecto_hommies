@@ -80,11 +80,11 @@ test:
 #   production:
 #     url: <%= ENV['DATABASE_URL'] %>
 #
-# production:
-#   <<: *default
-#   database: myHommiesApp_production
-#   username: myHommiesApp
-#   password: <%= ENV['MYHOMMIESAPP_DATABASE_PASSWORD'] %>
+  production:
+    <<: *default
+    database: proyecto_hommies_production
+    # username: proyecto_hommies
+    # password: <%= ENV['MYHOMMIESAPP_DATABASE_PASSWORD'] %>
 
 # SQLite version 3.x
 #   gem install sqlite3
