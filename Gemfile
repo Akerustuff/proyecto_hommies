@@ -8,13 +8,28 @@ ruby '2.6.3'
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '~> 5.2.3'
 
+gem 'aasm'
+gem 'activeadmin'
+gem 'after_commit_everywhere', '~> 1.0'
+gem 'chartkick'
+gem 'devise'
 gem 'dotenv-rails'
+gem 'groupdate'
+gem 'kaminari'
+gem 'mini_magick'
+gem 'omniauth'
+gem 'omniauth-google-oauth2'
+gem 'omniauth-rails_csrf_protection'
+gem 'paranoia', '~> 2.2'
 # Use postgresql as the database for Active Record
 gem 'pg', '>= 0.18', '< 2.0'
 # Use Puma as the app server
 gem 'puma', '~> 3.11'
+gem 'ransack'
 # Use SCSS for stylesheets
 gem 'sass-rails', '~> 5.0'
+# gem 'sendgrid-actionmailer'
+gem 'sendgrid-ruby'
 # Use Uglifier as compressor for JavaScript assets
 gem 'uglifier', '>= 1.3.0'
 # See https://github.com/rails/execjs#readme for more supported runtimes
@@ -54,6 +69,8 @@ group :development do
   # Rubocop
   gem 'rubocop', require: false
   gem 'rubocop-rails', require: false
+  # Solargraph
+  gem 'solargraph'
 
   # Spring speeds up development by keeping your application running in the background. Read more: https://github.com/rails/spring
   gem 'spring'

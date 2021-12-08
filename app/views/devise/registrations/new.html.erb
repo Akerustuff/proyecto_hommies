@@ -1,0 +1,94 @@
+<body style="background: #5812c5;">
+  <div class="container register-container mb-4">
+    <br>
+    <hr>
+    <div class="card register-card">
+      <div class="d-flex justify-content-center">
+        <div class="air">
+        </div>
+        <div class="brand_logo_container">
+          <%= image_tag 'mha_logo.jpg', class:"brand_logo"%>
+        </div>
+      </div>
+
+      <div class="card-body mx-auto">
+        <h4 class="card-title m-3 text-center">Crea una cuenta</h4>
+        <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
+          <%= render "devise/shared/error_messages", resource: resource %>
+          <div class="input-group mb-3">
+            <span class="input-group-text"><i class="fas fa-user"></i></span>
+            <div class="form-control input_user p-0">
+              <%= f.text_field :first_name, autofocus: true, placeholder:"Nombre", class:"form-control input_user p-2 border-0"%>
+            </div>
+          </div>
+
+          <div class="input-group mb-3">
+            <span class="input-group-text"><i class="fas fa-user"></i></span>
+            <div class="form-control input_user p-0">
+              <%= f.text_field :last_name, placeholder:"Apellido", class:"form-control input_user p-2 border-0"%>
+            </div>
+          </div>
+
+          <div class="input-group mb-3">
+            <span class="input-group-text"><i class="fas fa-envelope"></i></span>
+            <div class="form-control input_user p-0 ">
+              <%= f.email_field :email, placeholder:"Correo electrónico", class:"form-control input_user p-2 border-0"%>
+            </div>
+          </div>
+
+          <div class="input-group mb-3">
+            <span class="input-group-text"><i class="fas fa-calendar"></i></span>
+            <span class="align-middle">
+              <%= f.date_select :birthdate, start_year: Date.today.year, end_year: Date.today.year - 100, class:"form-control input_user p-2 border-0"%>
+            </span>
+          </div>
+
+          <div class="input-group mb-3">
+            <span class="input-group-text"><i class="fas fa-camera"></i></span>
+            <div class="form-control input_user p-0 ">
+              <%= f.file_field :avatar, class:"form-control input_user p-2 border-0"%>
+            </div>
+          </div>
+
+          <div class="input-group mb-3">
+            <span class="input-group-text"><i class="fas fa-key"></i></span>
+            <div class="form-control input_user p-0 ">
+              <% if @minimum_password_length %>
+                <em>(<%= @minimum_password_length %> caracteres mínimos)</em>
+              <% end %>
+              <%= f.password_field :password, placeholder: "Contraseña", class:"form-control input_user p-2 border-0" %>
+            </div>
+          </div>
+
+          <div class="input-group mb-3">
+            <span class="input-group-text"><i class="fas fa-key"></i></span>
+            <div class="form-control input_user p-0 ">
+              <%= f.password_field :password_confirmation, placeholder: "Repita la contraseña", class:"form-control input_user p-2 border-0"%>
+            </div>
+          </div>
+
+          <div class="form-group d-flex justify-content-center">
+              <%= f.submit "Crear cuenta", class: "btn btn-primary btn-block" %>
+          </div>
+        <% end %>
+
+        <p class="divider-text">
+          <span class="bg-card">O</span>
+        </p>
+
+        <p class="text-center">¿Ya tienes una cuenta?
+          <%= link_to 'Iniciar sesión', new_user_session_path, class: 'nav-link active' %>
+        </p>
+        <p class="d-flex justify-content-center">
+          <%- resource_class.omniauth_providers.each do |provider| %>
+            <button type="button" class="btn btn-primary m-0 p-2">
+              <i class="fab fa-google"></i>
+              <%= link_to "Iniciar sesión con Google", omniauth_authorize_path(resource_name, provider), method: :post, class:"text-decoration-none text-white" %><br />
+            </button>
+          <% end %>
+        </p>
+      </div>
+    </div> <!-- card.// -->
+  </div>
+  <%= render "shared/footer" %>
+</body>

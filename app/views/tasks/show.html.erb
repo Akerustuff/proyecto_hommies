@@ -1,0 +1,80 @@
+<p>
+  <strong>Nombre:</strong>
+  <%= @task.name %>
+</p>
+
+<p>
+  <strong>Descripcion:</strong>
+  <%= @task.description %>
+</p>
+
+<p>
+  <strong>Categoria:</strong>
+  <%= @task.category %>
+</p>
+
+<p>
+  <strong>Fecha limite:</strong>
+  <%= @task.limit_date %>
+</p>
+
+<p>
+  <strong>Creado por:</strong>
+  <%= @task.owner %>
+</p>
+<p>
+  <strong>Aprobado por:</strong>
+  <%= @task.reviewer %>
+</p>
+<p>
+  <strong>Asignado a:</strong>
+  <%= @task.assignee.nil? ? 'Sin asignar' : @task.assignee %>
+</p>
+
+<p>
+  <strong>Estado de la tarea: </strong>
+    <%= 'Sin asignar' if @task.created?%>
+    <%= 'Asignada' if @task.assigned?%>
+    <%= 'Por aprobar' if @task.finished?%>
+    <%= 'Aprobada' if @task.approved?%>
+</p>
+
+<div>
+<% if @task.assigned? && current_user.id == @task.assignee_id %>
+  <%= link_to 'Finalizar Tarea', finish_task_path(id: @task.id) %>
+<% elsif @task.finished? && current_user.id != @task.assignee_id %>
+  <%= link_to 'Aprobar Tarea', approve_task_path(id: @task.id) %>
+  <%= link_to 'Rechazar Tarea', reject_task_path(id: @task.id) %>
+<% end %>
+</div>
+
+<div>
+<h4>Comentarios</h4>
+</div>
+<div>
+  <%= render 'comments/form', comment: @comment %>
+
+<% @comments.each do |comment|%>
+  <div>
+    <%= image_tag(comment.user.thumbnail_photo) %>
+    <%= comment.user.first_name %>
+    <hr/>
+    <%= comment.content %>
+    <hr/>
+    <% (0...comment.images.count).each do |image| %>
+    <%= image_tag(comment.comment_image_style(image)) %>
+    <% end %>
+    <hr/>
+    <%= comment.created_at %>
+    <hr/>
+    <%= link_to 'Eliminar', comment, method: :delete, data: { confirm: 'Estás seguro de eliminar el comentario?' } %>
+    <% end %>
+  </div>
+</div>
+  <%= paginate @comments %>
+
+<% if @task.owner_id == current_user.id %>
+  <%= link_to 'Editar', edit_task_path(@task) %> |
+  <%= link_to 'Eliminar', @task, method: :delete, data: { confirm: 'Estás seguro de eliminar la tarea?' } %> |
+<% end %>
+<%= link_to 'Volver', tasks_path %>

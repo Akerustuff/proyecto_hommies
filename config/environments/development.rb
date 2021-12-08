@@ -34,8 +34,19 @@ Rails.application.configure do
 
   # Don't care if the mailer can't send.
   config.action_mailer.raise_delivery_errors = false
-
+  config.action_mailer.default_url_options = { host: 'localhost', port: 3000 }
+  config.action_mailer.delivery_method = :smtp
   config.action_mailer.perform_caching = false
+  # Code for sendgrid
+  ActionMailer::Base.smtp_settings = {
+    user_name: 'apikey', # This is the string literal 'apikey', NOT the ID of your API key
+    password: '<SENDGRID_API_KEY>', # This is the secret sendgrid API key which was issued during API key creation
+    domain: 'kelvis.alvarez20@gmail.com',
+    address: 'smtp.sendgrid.net',
+    port: 587,
+    authentication: :plain,
+    enable_starttls_auto: true
+  }
 
   # Print deprecation notices to the Rails logger.
   config.active_support.deprecation = :log

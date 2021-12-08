@@ -1,0 +1,16 @@
+<%= form_with(model: comment, local: true)  do |f| %>
+
+  <div class="field">
+    <%= f.label :content, "#{current_user.first_name} dice:" %><br />
+    <%= f.text_area :content, id: :comment_content %>
+  </div>
+
+  <div class="field">
+    <%= f.label :images %><br />
+    <%= f.file_field :images, multiple: true%>
+  </div>
+
+  <div class="actions">
+    <%= f.submit "Publicar" %>
+  </div>
+<% end %>

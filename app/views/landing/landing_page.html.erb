@@ -1,0 +1,20 @@
+<div class="container-fluid home-main">
+	<h2>My Hommies App</h2>
+	<button type="button" class="btn btn-default">
+    <%= link_to 'Registrate', new_user_registration_path, class: 'home-link' %>
+	</button>
+</div>
+<div class="container-fluid home-content1">
+	<div class="row">
+		<div class="col-md-6 content1-left">
+			<h3>Administra tus tareas del hogar</h3>
+			<p>Crea, asigna y aprueba las tareas de tu hogar de manera fácil y rápida</p>
+		</div>
+		<div class="col-md-6 content1-right">
+			<h3>Notifica a tus hommies</h3>
+			<p>Envía correos a tus hommies al asignarles una tarea nueva.</p>
+		</div>
+	</div>
+</div>
+<%= render "shared/footer" %>
+

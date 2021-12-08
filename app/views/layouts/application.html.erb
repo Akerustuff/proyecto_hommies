@@ -7,9 +7,33 @@
 
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.1/css/all.css" integrity="sha384-gfdkjb5BdAXd+lj+gudLWI+BXq4IuLW5IT+brZEZsLFm++aCMlF1V92rMkPaX4PP" crossorigin="anonymous">
   </head>
 
   <body>
+    <div>
+      <%= render "shared/navbar"%>
+    </div>
+    <% unless notice.nil? %>
+    <div class="alert alert-success alert-dismissible fade show" role="alert">
+      <span><%= notice || params[:notice] %></span>
+      <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close">
+        <%# <span aria-hidden="true">&times;</span> %>
+      </button>
+    </div>
+    <% end %>
+    <% unless alert.nil? %>
+    <div class="alert alert-danger alert-dismissible fade show" role="alert">
+      <span><%= alert %></span>
+      <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+    </div>
+      <button type="button" class="btn-close" data-dismiss="alert" aria-label="Close">
+        <span aria-hidden="true">&times;</span>
+      </button>
+    </div>
+    
+
+    <% end %>
     <%= yield %>
   </body>
 </html>

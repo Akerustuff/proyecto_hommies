@@ -1,0 +1,33 @@
+<%= form_with(model: @task, local: true) do |form| %>
+  <div class="mb-3">
+    <%= form.label :name, "Nombre", class:"mb-1" %>
+    <%= form.text_field :name, autofocus: true, placeholder:"Sacar al perro", class:"form-control"%>
+  </div>
+
+  <div class="mb-3">
+    <%= form.label :description, "Descripción", class:"mb-1" %>
+    <%= form.text_area :description, placeholder:"¿De qué trata la tarea?", class:"form-control"%>
+  </div>
+
+  <div class="mb-3">
+    <%= form.label :category, "Categoría", class:"mb-1" %><br/>
+    <%= form.select :category, Task.categories.keys, class:"form-control"%>
+  </div>
+
+  <div class="mb-3">
+    <%= form.label :limit_date, "Fecha límite", class:"mb-1" %><br/>
+    <%= form.date_select :limit_date, start_year: Date.today.year, end_year: Date.today.year + 20, class:"form-control input_user p-2 border-0"%>
+  </div>
+
+  <div class="mb-3">
+    <%= form.label :assignee, "Asignar a", class:"mb-1" %><br/>
+    <%= form.collection_select(:assignee_id, @users, :id, :first_name, {include_blank: true}) %>
+  </div>
+
+  <div class="actions">
+    <%= form.submit "Guardar", class:"btn task-btn" %>
+    <button type="button" class="btn back-btn">
+      <%= link_to 'Regresar', tasks_path, class:"btn text-decoration-none text-white px-0"  %>
+    </button>
+  </div>
+<% end %>

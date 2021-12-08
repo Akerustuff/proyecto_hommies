@@ -1,0 +1,25 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  name: MyString
+  description: MyText
+  category: 1
+  limit_date: 2021-11-01
+  finished_date: 2021-11-01
+  approved_date: 2021-11-01
+  house: one
+  owner_user: one
+  assignee_user: one
+  reviewer_user: one
+
+two:
+  name: MyString
+  description: MyText
+  category: 1
+  limit_date: 2021-11-01
+  finished_date: 2021-11-01
+  approved_date: 2021-11-01
+  house: two
+  owner_user: two
+  assignee_user: two
+  reviewer_user: two
