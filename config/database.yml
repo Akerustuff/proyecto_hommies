@@ -78,11 +78,12 @@ test:
 # You can use this database configuration with:
 #
 #   production:
-#     url: <%= ENV['DATABASE_URL'] %>
 #
   production:
     <<: *default
     database: proyecto_hommies_production
+    url: <%= ENV['DATABASE_URL'] %>
+
     # username: proyecto_hommies
     # password: <%= ENV['MYHOMMIESAPP_DATABASE_PASSWORD'] %>
 
