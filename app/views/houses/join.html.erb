@@ -1,33 +1,20 @@
-<div class="container-fluid new-house-top h-50">
+<div class="container-fluid new-house-top h-100">
 	<h2>Unirme a una casa</h2>
 	<h4>Ingresa el código de la casa a la que te unirás</h4>
-  <%= form_with(model: @house, local: true)  do |f| %>
+  <%= form_with(url: join_house_path, local: true)  do |f| %>
     <div class="form-control input_user p-0 mt-4">
-      <%= f.text_field :name, autofocus: true, class:"form-control input_user p-2 border-0" %>
+      <%= f.text_field :code, autofocus: true, class:"form-control input_user p-2 border-0" %>
     </div>
     <%= f.submit "Unirse", class: "btn new-house-top-button p-2"%>
   <% end %>
     <h3 class="mt-5">Como residente de tu nuevo hogar podrás:</h3>
-</div>
-<div class="container-fluid new-house-bottom h-50">
+<div class="container-fluid new-house-bottom">
   <div>
     <p><span class="mt-2"><i class="fas fa-home fa-1x"></i>   Crear nuevas tareas para tí y tus hommies.</span></p>
     <p><span class="mt-2"><i class="fas fa-home fa-1x"></i>   Administrar tus tareas desde tu perfil.</span></p>
     <p><span class="mt-2"><i class="fas fa-home fa-1x"></i>   Dejar la casa cuando quieras y unirte a una nueva.</span></p>
   </div>
 </div>
+</div>
+
 <%= render "shared/footer" %>
-
-<h2></h2>
-
-<%= form_with(url: join_house_path, local: true)  do |f| %>
-
-  <div class="field">
-    <%= f.label :code %><br />
-    <%= f.text_field :code %>
-  </div>
-
-  <div class="actions">
-    <%= f.submit "Unirme" %>
-  </div>
-<% end %>
