@@ -21,7 +21,7 @@ class HousesController < ApplicationController
         current_user.house_id = @house.id
         current_user.owner = true
         current_user.save
-        format.html { redirect_to @house, notice: 'house was successfully created.' }
+        format.html { redirect_to @house, notice: 'la casa ha sido creada con èxito.' }
         format.json { render :show, status: :created, location: @house }
       else
         format.html { render :new, status: :unprocessable_entity }
@@ -41,7 +41,7 @@ class HousesController < ApplicationController
       respond_to do |format|
         current_user.house_id = @house.id
         if current_user.save
-          format.html { redirect_to @house, notice: 'You are joined successfully.' }
+          format.html { redirect_to @house, notice: 'Te has unido a la casa.' }
           # format.json { render :show, status: :created, location: @house }
         else
           format.html { render :new, status: :unprocessable_entity }

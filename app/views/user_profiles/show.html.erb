@@ -23,6 +23,7 @@
 
 <div>
   <h4>Casa: <%= @profile.house.name%></h4>
+  <h4>Codigo: <%= @profile.house.code%></h4>
 <div>
   <%# <%= link_to 'editar perfil', edit_user_profile_path %>
   <%= button_tag 'editar perfil', type: 'button', data: { bs_toggle: 'modal', bs_target: '#editUserModal' } %>
