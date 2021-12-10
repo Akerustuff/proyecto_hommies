@@ -1,22 +1,21 @@
-<body style="background: #5812c5;">
-  <div class="container mb-4 h-100">
+<div class="container index-task-container mb-4">
 
-    <h1 class="mt-5 task-text text-white">Listado de tareas</h1>
+    <h1 class="mt-5 task-text">Listado de tareas</h1>
     <div class="row">
     <div class="col">
       <%= render 'tasks/search_form.html.erb' %>
     </div>
     <div class="col d-flex align-self-start justify-content-end">
-      <button type="button" class="btn back-btn">
-        <%= link_to 'Nueva tarea', new_task_path,  class:"btn text-decoration-none text-white px-0 " %>
+      <button type="button" class="btn new-task-btn">
+        <%= link_to 'Nueva tarea', new_task_path,  class:"btn px-0 " %>
       </button>
     </div>
-    <div class="">
 
 
-      <table>
+    <div class="mt-5">
+      <table class="table table-striped">
         <tr>
-          <th><%= sort_link(@q, :name, "Nombre", default_order: :asc)%></th>
+          <th><%= sort_link(@q, :name, "Nombre", {default_order: :asc}, {class: "sort-link-color"})%></th>
           <th>Descripción</th>
           <th>Categoria</th>
           <th>Fecha limite</th>
@@ -25,6 +24,7 @@
           <th>Asignado a</th>
           <th>Creado por</th>
           <th>Aprobado por</th>
+          <th>Acciones</th>
         </tr>
         <% @tasks.each do |task|%>
           <tr>
@@ -37,10 +37,11 @@
           <td><%= task.assignee%></td>
           <td><%= task.owner%></td>
           <td><%= task.reviewer%></td>
-          <td><%= link_to 'Ver', task %></td>
+          <td class="actions-style"><%= link_to 'Abrir', task %></td>
           </tr>
         <% end %>
       </table>
     </div>
   </div>
-</body>
+</div>
+<%= render "shared/footer" %>

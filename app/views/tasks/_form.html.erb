@@ -25,9 +25,10 @@
   </div>
 
   <div class="actions">
-    <%= form.submit "Guardar", class:"btn task-btn" %>
     <button type="button" class="btn back-btn">
-      <%= link_to 'Regresar', tasks_path, class:"btn text-decoration-none text-white px-0"  %>
+      <%= link_to 'Regresar', tasks_path, class:"btn px-0"  %>
     </button>
+    <%= form.submit "Guardar", class:"btn task-btn" %>
+    
   </div>
 <% end %>

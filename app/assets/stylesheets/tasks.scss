@@ -1,9 +1,17 @@
+.new-task-container{
+  padding: 5.2% 20%;
+}
+.new-task-container h4{
+  color: #212529;
+}
 .task-btn {
   width: 40%;
-  background: #c0392b !important;
-  color: white !important;
+  margin-left: 16%;
+  background: #72D1DB !important;
+  color: #F3EDE6;
   justify-content: center;
-  border-radius: 0.25rem 0 0 0.25rem !important;
+  border: none;
+  border-radius: 0.25rem;
 }
 .task-btn:focus {
   box-shadow: none !important;
@@ -12,18 +20,72 @@
 }
 .back-btn {
   width: 40%;
-  margin-left: 16%;
   padding: 0px 12px 0px 12px !important;
   background: #6c757d !important;
-  color: white !important;
+  color: #F3EDE6;
   justify-content: center;
 }
+.task-btn a:hover{
+  color: #212529;
+}
+.back-btn a{
+  color: #F3EDE6;
+}
+.back-btn a:hover{
+  color: #212529;
+}
+
+// CSS del Listado de tareas
+.index-task-container{
+  padding-top: 5.2%;
+  padding-bottom: 5.2%;
+}
 .task-text{
-  color: white !important;
+  color: #1C7D75;
 }
 .search-div{
   width: 30%;
 }
-.ntask-btn{
-  
+.search-btn {
+  width: 25%;
+  background: #72D1DB !important;
+  color: #F3EDE6;
+  justify-content: center;
+  border: none;
+  border-radius: 0.25rem;
+}
+.search-btn:hover {
+  color: #212529;
+}
+.new-task-btn {
+  width: 40%;
+  padding: 0px 12px 0px 12px;
+  background: #8FE6B1;
+  color: #F3EDE6;
+  justify-content: center;
+}
+.new-task-btn a{
+  text-decoration: none;
+  color: #393939;
+}
+.new-task-btn a:hover{
+  color: #F3EDE6;
+}
+.tr:nth-child(even){
+  background-color: #5812c5;
+}
+.sort-link-color{
+  text-decoration: none;
+  color: #1C7D75;
+}
+.actions-style{
+  text-align: center;
+}
+.actions-style a{
+  text-decoration: none;
+  color: #393939;
+}
+.actions-style a:hover{
+  text-decoration: underline;
+  color: #393939;
 }

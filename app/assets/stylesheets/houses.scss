@@ -1,22 +1,30 @@
 .whouse-main{
-  background: #5812c5;
-  color:#fff;
-  padding: 13%;
+  background: #F3EDE6;
+  color:#1C7D75;
+  padding: 8%;
   text-align: center;
 }
+.wcontent1-left{
+  padding: 5% 12%;
+  background: #8FE6B1;
+  color: #393939;
+}
+.wcontent1-right{
+  padding: 5% 12%;
+  background:#72D1DB;
+  color: #393939;
+}
 .whouse-main button{
-  background: #fff;
-  color: #5812c5;
+  background: #F3EDE6;
   border-radius: 0;
   font-weight: 700;
-  width: 16%;
+  width: auto;
   height: 50px;
   top: 4%;
   margin-top: 3%;
 }
 .whouse-main button:hover{
   transition: 1s ease;
-  color:#5812c5;
   width: 19%;
   height: 19%;
 }
@@ -24,6 +32,7 @@
   display: block;
   padding: 0.5rem 1rem;
   color: #212529;
+  font-weight: 700;
   text-decoration: none;
   transition: color 0.15s
 }
@@ -45,23 +54,22 @@
   margin: 0;
   padding: 0;
 }
-
 //CSS de nueva casa y unirse a una casa
 .new-house-top{
-  background: #5812c5;
-  color:#fff;
-  padding: 13% 20%;
+  background: #F3EDE6;
+  color:#1C7D75;
+  padding: 7% 20%;
   text-align: center;
 }
 .new-house-bottom{
-  background: #5812c5;
-  color:#fff;
-  padding: 2% 21% 13%;
+  background: #F3EDE6;
+  color:#1C7D75;
+  padding: 2% 20% 2%;
   text-align: left;
 }
 .new-house-top-button{
-  background: #fff;
-  color: #000;
+  background: #72D1DB;
+  color: #F3EDE6;
   border-radius: round($number: 1);
   font-weight: 700;
   width: 16%;
@@ -69,20 +77,13 @@
   top: 4%;
   margin-top: 3%;
 }
-.new-house-top button:hover{
-  transition: 1s ease;
-  color:#5812c5;
-  width: 19%;
-  height: 19%;
-}
 .new-house-top a{
   display: block;
-  padding: 0.5rem 1rem;
-  color: #212529;
+  padding: 0;
+  color: #393939;
   text-decoration: none;
   transition: color 0.15s
 }
 .new-house-top a:hover{
-  transition: 1s ease;
-  font-size: 125%;
+  color: #212529;
 }

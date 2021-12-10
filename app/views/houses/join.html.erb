@@ -1,4 +1,4 @@
-<div class="container-fluid new-house-top h-100">
+<div class="container-fluid new-house-top">
 	<h2>Unirme a una casa</h2>
 	<h4>Ingresa el código de la casa a la que te unirás</h4>
   <%= form_with(url: join_house_path, local: true)  do |f| %>
@@ -7,14 +7,15 @@
     </div>
     <%= f.submit "Unirse", class: "btn new-house-top-button p-2"%>
   <% end %>
-    <h3 class="mt-5">Como residente de tu nuevo hogar podrás:</h3>
-<div class="container-fluid new-house-bottom">
-  <div>
-    <p><span class="mt-2"><i class="fas fa-home fa-1x"></i>   Crear nuevas tareas para tí y tus hommies.</span></p>
-    <p><span class="mt-2"><i class="fas fa-home fa-1x"></i>   Administrar tus tareas desde tu perfil.</span></p>
-    <p><span class="mt-2"><i class="fas fa-home fa-1x"></i>   Dejar la casa cuando quieras y unirte a una nueva.</span></p>
+    <h3 class="mt-5">Al unirte a una casa como residente tendrás la posibilidad de:</h3>
+  <div class="container-fluid new-house-bottom">
+    <div>
+      <p><span class="mt-2"><i class="fas fa-home fa-1x"></i>   Crear nuevas tareas para tí y tus hommies.</span></p>
+      <p><span class="mt-2"><i class="fas fa-home fa-1x"></i>   Administrar tus tareas desde tu perfil.</span></p>
+      <p><span class="mt-2"><i class="fas fa-home fa-1x"></i>   Dejar la casa cuando quieras y unirte a una nueva.</span></p>
+    </div>
   </div>
-</div>
+  <%= link_to 'Regresar', landing_without_house_path %>
 </div>
 
 <%= render "shared/footer" %>
