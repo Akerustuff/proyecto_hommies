@@ -17,21 +17,14 @@
   top: 4%;
   margin-top: 3%;
 }
-.home-main button:hover{
-  transition: 1s ease;
-  width: 19%;
-  height: 19%;
-}
 .home-main a{
   display: block;
   padding: 0.5rem 1rem;
   color: #F3EDE6;
   text-decoration: none;
-  transition: color 0.15s
 }
 .home-main a:hover{
-  transition: 1s ease;
-  font-size: 125%;
+  color: #393939;
 }
 .content1-left{
   padding:9%;

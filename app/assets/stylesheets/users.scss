@@ -2,7 +2,6 @@ body,
 		html {
 			margin: 0;
 			padding: 0;
-			height: 100%;
 			background: #F3EDE6
 		}
 
@@ -11,7 +10,7 @@ body,
     .user_card {
 			height: 400px;
 			width: 350px;
-			margin-top: auto;
+			margin-top: 12%;
 			margin-bottom: auto;
 			background: #8FE6B1;
 			position: relative;
@@ -76,6 +75,9 @@ body,
     .bg-card{
       background: #8FE6B1;
     }
+    .card-title{
+      color: #1C7D75;
+    }
     .card-body{
       max-width: 400px;
     }
@@ -104,6 +106,9 @@ body,
     background: #72D1DB;
     color: #F3EDE6;
   }
+  .btn-submit-color:hover{
+    color: #212529
+  }
   footer{
     background: #1C7D75;
     bottom:0;
@@ -115,11 +120,11 @@ body,
   footer p{
     margin-top: 1rem;
     margin-bottom: 1rem;
+    width: 100%;
     color: #F3EDE6
   }
   .register-card{
     background: #8FE6B1;
-    // width: 800px;
     position: relative;
     display: flex;
     justify-content: center;
@@ -131,13 +136,16 @@ body,
   .edit-photo-top{
     background: #F3EDE6;
     color:#1C7D75;
-    padding: 8.7% 25%;
+    padding: 8% 25%;
     text-align: center;
   }
   .edit-photo-btn {
     width: 50%;
     background: #72D1DB !important;
-    color: white !important;
+    color: white;
+  }
+  .edit-photo-btn:hover {
+    color: #393939;
   }
   .edit-photo-btn:focus {
     box-shadow: none !important;

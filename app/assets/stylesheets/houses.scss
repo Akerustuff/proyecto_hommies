@@ -1,7 +1,8 @@
 .whouse-main{
   background: #F3EDE6;
   color:#1C7D75;
-  padding: 8%;
+  padding-top: 7.5%;
+  padding-bottom: 7%;
   text-align: center;
 }
 .wcontent1-left{
@@ -58,7 +59,7 @@
 .new-house-top{
   background: #F3EDE6;
   color:#1C7D75;
-  padding: 7% 20%;
+  padding: 7% 20% 6%;
   text-align: center;
 }
 .new-house-bottom{
@@ -86,4 +87,36 @@
 }
 .new-house-top a:hover{
   color: #212529;
+}
+.join-house-top{
+  background: #F3EDE6;
+  color:#1C7D75;
+  padding: 7% 20% 6.7%;
+  text-align: center;
+}
+.join-house-top a{
+  display: block;
+  padding: 0;
+  color: #393939;
+  text-decoration: none;
+  transition: color 0.15s
+}
+.join-house-top a:hover{
+  color: #212529;
+}
+.join-house-bottom{
+  background: #F3EDE6;
+  color:#1C7D75;
+  padding: 2% 20% 2%;
+  text-align: left;
+}
+.join-house-top-button{
+  background: #72D1DB;
+  color: #F3EDE6;
+  border-radius: round($number: 1);
+  font-weight: 700;
+  width: 16%;
+  height: 50px;
+  top: 4%;
+  margin-top: 3%;
 }

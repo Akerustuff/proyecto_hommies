@@ -1,23 +1,25 @@
-<div class="container-fluid whouse-main">
-	<h2>Bienvenido a My Hommies App</span></h2>
-	<h3>¿Qué deseas hacer?</h3>
-</div>
-<div class="container-fluid">
-	<div class="row">
-		<div class="col-md-6 wcontent1-left d-flex flex-column justify-content-center">
-      <span class="d-flex justify-content-center"><i class="fas fa-home fa-7x"></i></span>
-			<h3 class="d-flex justify-content-center">Crear una nueva casa</h3>
-			<button type="button" class="btn whouse-main button p-2 mx-5">
-        <%= link_to 'Crear', new_house_path, class: 'home-link' %>
-      </button>
-		</div>
-		<div class="col-md-6 d-flex flex-column justify-content-center wcontent1-right">
-			<span class="d-flex justify-content-center"><i class="fas fa-users fa-7x"></i></span>
-			<h3 class="d-flex justify-content-center">Unirte a una casa</h3>
-			<button type="button" class="btn whouse-main button p-2 mx-5">
-        <%= link_to 'Unirte', join_path, class: 'home-link' %>
-      </button>
+<body class="d-flex flex-column min-vh-100">
+	<div class="container-fluid whouse-main">
+		<h2>Bienvenido a My Hommies App</span></h2>
+		<h3>¿Qué deseas hacer?</h3>
+	</div>
+	<div class="container-fluid">
+		<div class="row">
+			<div class="col-md-6 wcontent1-left d-flex flex-column justify-content-center">
+				<span class="d-flex justify-content-center"><i class="fas fa-home fa-7x"></i></span>
+				<h3 class="d-flex justify-content-center">Crear una nueva casa</h3>
+				<button type="button" class="btn whouse-main button p-2 mx-5">
+					<%= link_to 'Crear', new_house_path, class: 'home-link' %>
+				</button>
+			</div>
+			<div class="col-md-6 d-flex flex-column justify-content-center wcontent1-right">
+				<span class="d-flex justify-content-center"><i class="fas fa-users fa-7x"></i></span>
+				<h3 class="d-flex justify-content-center">Unirte a una casa</h3>
+				<button type="button" class="btn whouse-main button p-2 mx-5">
+					<%= link_to 'Unirte', join_path, class: 'home-link' %>
+				</button>
+			</div>
 		</div>
 	</div>
-</div>
-<%= render "shared/footer" %>
+	<%= render "shared/footer" %>
+</body>

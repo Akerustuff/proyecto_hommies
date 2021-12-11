@@ -1,24 +1,25 @@
-<div class="container-fluid new-house-top">
-	<h2>Crear un casa nueva</h2>
-	<h4>Ingresa el nombre de tu nuevo hogar</h4>
-  <%= form_with(model: @house, local: true)  do |f| %>
-    <div class="form-control input_user p-0 mt-4">
-      <%= f.text_field :name, autofocus: true, placeholder: 'La Baticueva', class:"form-control input_user p-2 border-0" %>
-    </div>
-    <%= f.submit "Crear", class: "btn new-house-top-button p-2"%>
-  <% end %>
-    <h3 class="mt-5">Recuerda que al crear la casa tendrás privilegios especiales</h3>
+<body class="d-flex flex-column min-vh-100">
+  <div class="container-fluid new-house-top">
+    <h2>Crear un casa nueva</h2>
+    <h4>Ingresa el nombre de tu nuevo hogar</h4>
+    <%= form_with(model: @house, local: true)  do |f| %>
+      <div class="form-control input_user p-0 mt-4">
+        <%= f.text_field :name, autofocus: true, placeholder: 'La Baticueva', class:"form-control input_user p-2 border-0" %>
+      </div>
+      <%= f.submit "Crear", class: "btn new-house-top-button p-2"%>
+    <% end %>
+      <h3 class="mt-5">Recuerda que al crear la casa tendrás privilegios especiales</h3>
 
-  <div class="container-fluid new-house-bottom">
-    <div>
-      <p><span class="mt-2"><i class="fas fa-home fa-1x"></i>   Podrás darle el código de tu hogar a otros y formar una familia.</span></p>
-      <p><span class="mt-2"><i class="fas fa-home fa-1x"></i>   Podrás sacar a cualquier miembro de la casa.</span></p>
-      <p><span class="mt-2"><i class="fas fa-home fa-1x"></i>   Serás el único que podrá clausurar el casa que has creado.</span></p>
+    <div class="container-fluid new-house-bottom">
+      <div>
+        <p><span class="mt-2"><i class="fas fa-home fa-1x"></i>   Podrás darle el código de tu hogar a otros y formar una familia.</span></p>
+        <p><span class="mt-2"><i class="fas fa-home fa-1x"></i>   Podrás sacar a cualquier miembro de la casa.</span></p>
+        <p><span class="mt-2"><i class="fas fa-home fa-1x"></i>   Serás el único que podrá clausurar el casa que has creado.</span></p>
+      </div>
+      
     </div>
-    
+      <%= link_to 'Regresar', landing_without_house_path %>
   </div>
-    <%= link_to 'Regresar', landing_without_house_path %>
+
+  <%= render "shared/footer" %>
 </div>
-
-<%= render "shared/footer" %>
-
