@@ -5,7 +5,7 @@ class Comment < ApplicationRecord
   belongs_to :task
   has_many_attached :images
 
-  paginates_per 2
+  paginates_per 5
   # Validación de soft delete
   acts_as_paranoid
 

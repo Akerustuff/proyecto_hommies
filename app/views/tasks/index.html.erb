@@ -51,6 +51,11 @@
           </tr>
         <% end %>
       </table>
+      <% if @tasks.empty? %>
+      <div class="d-flex justify-content-center">
+        <p class="task-text">No se encontraron resultados</p>
+      </div>
+    <% end %>
     </div>
   </div>
 </div>

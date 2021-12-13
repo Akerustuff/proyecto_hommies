@@ -1,45 +1,63 @@
-<h1><%= @house.name%></h1>
+<body class="d-flex flex-column min-vh-100">
+<div class="container mt-5 mb-4">
 
-<%= render 'houses/search_form.html.erb' %>
-<div>
-  <%= link_to 'Listado de tareas', tasks_path %>
-  <div>
-    <table>
-      <thead>
+    <h1 class="mt-3 task-text">Bienvenido a <%= @house.name%> </h1>
+    <div class="row">
+    <div class="col">
+      <%= render 'houses/search_form.html.erb' %>
+    </div>
+    <div class="col d-flex align-self-start justify-content-end">
+      <button type="button" class="btn new-task-btn">
+        <%= link_to 'Listado de tareas', tasks_path,  class:"btn px-0 " %>
+      </button>
+    </div>
+    <div class="d-flex justify-content-center mt-5">
+        <h2 class="task-text">Tareas pendientes </h2>
+    </div>
+
+    <div class="mt-5">
+      <table class="table table-striped">
         <tr>
-          <th><%= sort_link(@q, :name, "Nombre", default_order: :asc)%></th>
+          <th><%= sort_link(@q, :name, "Nombre", {default_order: :asc}, {class: "sort-link-color"})%></th>
           <th>Descripción</th>
-          <th>Categoría</th>
-          <th>Fecha límite</th>
+          <th>Categoria</th>
+          <th>Estado</th>
+          <th>Fecha limite</th>
+          <th>Fecha fin</th>
+          <th>Fecha de aprobacion</th>
           <th>Asignado a</th>
           <th>Creado por</th>
-          <th>Fecha de finalización</th>
-          <th>Fecha de aprobación</th>
-          <th colspan="3"></th>
+          <th>Aprobado por</th>
+          <th>Acciones</th>
         </tr>
-      </thead>
-      <tbody>
-        <% @house_tasks.each do |task| %>
+        <% @house_tasks.each do |task|%>
           <tr>
-            <td><%= task.name%></td>
-            <td><%= task.description%></td>
-            <td><%= task.category%></td>
-            <td><%= task.limit_date%></td>
-            <td><%= task.assignee%></td>
-            <td><%= task.owner%></td>
-            <td><%= task.finished_date%></td>
-            <td><%= task.approved_date%></td>
-            <td><%= task.reviewer%></td>
-            <td><%= link_to 'Ver', task %></td>
+          <td><%= task.name%></td>
+          <td><%= task.description%></td>
+          <td><%= task.category%></td>
+          <td>
+            <%= 'Sin asignar' if task.created?%>
+            <%= 'Asignada' if task.assigned?%>
+            <%= 'Por aprobar' if task.finished?%>
+            <%= 'Aprobada' if task.approved?%>
+          </td>
+          <td><%= task.limit_date%></td>
+          <td><%= task.finished_date%></td>
+          <td><%= task.approved_date%></td>
+          <td><%= task.assignee%></td>
+          <td><%= task.owner%></td>
+          <td><%= task.reviewer%></td>
+          <td class="actions-style"><%= link_to 'Abrir', task %></td>
           </tr>
         <% end %>
-      </tbody>
-    </table>
-    <% if @house_tasks.empty? %>
-      <div>
-        <p>No se encontraron resultados</p>
+      </table>
+      <% if @house_tasks.empty? %>
+      <div class="d-flex justify-content-center">
+        <p class="task-text">No se encontraron resultados</p>
       </div>
     <% end %>
+    </div>
   </div>
-  <br>
 </div>
+  <%= render "shared/footer" %>
+</body>

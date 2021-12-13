@@ -1,7 +1,7 @@
 <%= search_form_for @q do |f| %>
   <p class="mb-1 task-text"><%= f.label :aasm_state_eq, 'Busca las tareas según su Estado' %></p>
   <%= f.select(:aasm_state_eq, options_for_select([['Por asignar', :created], ['Asignado', :assigned],
-                                                   ['Finalizado', :finished], ['Aprobado', :approved]]), {:include_blank => 'Todos'}) %>
+                                                   ['Finalizado', :finished], ['Aprobado', :approved]]), {:include_blank => 'Todas'}) %>
   <%= f.submit 'Buscar', class:"search-btn"%>
   <% end %>
     <%# Estableceré estos arreglos estaticos para el MPV [['Por asignar', :created], ['Asignado', :assigned], ['Finalizado', :finished], ['Aprobado', :approved]]
