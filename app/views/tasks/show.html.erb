@@ -146,16 +146,14 @@
             </div>
           </div>
           <hr class="my-1">
-          
-          <% unless (comment.images.count==0) %>
             <div class="my-1">
               <% (0...comment.images.count).each do |image| %>
                 <%= image_tag(comment.comment_image_style(image)) %>
               <% end %>
-              <hr class="my-1">
-            </div>
-          <% end %>
-
+              <% if (comment.images.count>0)%>
+                <hr class="my-1">
+              <% end %>
+          </div>
           <div class="row m-2">
             <div class="col-7">
             </div>
