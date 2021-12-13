@@ -21,7 +21,7 @@
           <th><%= sort_link(@q, :name, "Nombre", {default_order: :asc}, {class: "sort-link-color"})%></th>
           <th>Descripción</th>
           <th>Categoria</th>
-          <th>Estado</th>
+          <th><%= sort_link(@q, :aasm_state, "Estado", {default_order: :asc}, {class: "sort-link-color"})%></th>
           <th>Fecha limite</th>
           <th>Fecha fin</th>
           <th>Fecha de aprobacion</th>

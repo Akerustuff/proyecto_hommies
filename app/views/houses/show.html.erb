@@ -8,7 +8,7 @@
     </div>
     <div class="col d-flex align-self-start justify-content-end">
       <button type="button" class="btn new-task-btn">
-        <%= link_to 'Listado de tareas', tasks_path,  class:"btn px-0 " %>
+        <%= link_to 'Listado de tareas', tasks_path,  class:"btn px-0" %>
       </button>
     </div>
     <div class="d-flex justify-content-center mt-5">
@@ -21,7 +21,7 @@
           <th><%= sort_link(@q, :name, "Nombre", {default_order: :asc}, {class: "sort-link-color"})%></th>
           <th>Descripción</th>
           <th>Categoria</th>
-          <th>Estado</th>
+          <th><%= sort_link(@q, :aasm_state, "Estado", {default_order: :asc}, {class: "sort-link-color"})%></th>
           <th>Fecha limite</th>
           <th>Fecha fin</th>
           <th>Fecha de aprobacion</th>
