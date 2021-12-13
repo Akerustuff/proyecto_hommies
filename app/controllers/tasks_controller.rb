@@ -24,7 +24,7 @@ class TasksController < ApplicationController
     @task.owner_id = current_user.id
     @task.house_id = current_user.house_id
     @task.assign unless @task.assignee_id.nil?
-    send_email
+    send_email unless @task.assignee_id.nil?
     respond_to do |format|
       if @task.save
         format.html { redirect_to @task, notice: 'La tarea fue creada con éxito.' }
@@ -59,7 +59,7 @@ class TasksController < ApplicationController
     @task.destroy
     @house = current_user.house_id
     respond_to do |format|
-      format.html { redirect_to house_path(@house), notice: 'La tarea ha sido eliminada.' }
+      format.html { redirect_to tasks_path, notice: 'La tarea ha sido eliminada.' }
       format.json { head :no_content }
     end
   end

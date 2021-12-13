@@ -27,27 +27,27 @@ User.create(
 
 Task.create(
   [{ name: 'Barrer', description: 'Todo el depa', category: 0, limit_date: '2021-12-20', finished_date: nil,
-     approved_date: nil, house_id: 2, owner_id: 1, assignee_id: 2, reviewer_id: nil, aasm_state: 'assigned' },
+     approved_date: nil, house_id: 2, owner_id: 2, assignee_id: 3, reviewer_id: nil, aasm_state: 'assigned' },
    { name: 'Lavar', description: 'ropa de color', category: 0, limit_date: '2021-12-19', finished_date: nil,
-     approved_date: nil, house_id: 2, owner_id: 1, assignee_id: nil, reviewer_id: nil },
+     approved_date: nil, house_id: 2, owner_id: 2, assignee_id: nil, reviewer_id: nil },
    { name: 'Cocina semanal', description: 'de lunes a viernes', category: 1, limit_date: '2021-12-15',
-     finished_date: nil, approved_date: nil, house_id: 2, owner_id: 2, assignee_id: 1, reviewer_id: nil,
+     finished_date: nil, approved_date: nil, house_id: 2, owner_id: 3, assignee_id: 2, reviewer_id: nil,
      aasm_state: 'assigned' },
    { name: 'Sacar el perro', description: 'En la noche', category: 1, limit_date: '2021-12-30', finished_date: nil,
-     approved_date: nil, house_id: 3, owner_id: 3, assignee_id: nil, reviewer_id: nil },
+     approved_date: nil, house_id: 3, owner_id: 4, assignee_id: nil, reviewer_id: nil },
    { name: 'Mercado de carnes', description: 'solo carne roja', category: 2, limit_date: '2021-11-20',
-     finished_date: nil, approved_date: nil, house_id: 3, owner_id: 3, assignee_id: 3, reviewer_id: nil,
+     finished_date: nil, approved_date: nil, house_id: 3, owner_id: 4, assignee_id: 4, reviewer_id: nil,
      aasm_state: 'assigned' },
    { name: 'Mercado de frutas', description: 'frutas de estación', category: 2, limit_date: '2021-12-1',
-     finished_date: nil, approved_date: nil, house_id: 4, owner_id: 4, assignee_id: 5, reviewer_id: nil },
+     finished_date: nil, approved_date: nil, house_id: 4, owner_id: 5, assignee_id: 6, reviewer_id: nil },
    { name: 'Compras de limpieza', description: 'comprar cloro y desinfectante', category: 2, limit_date: '2021-12-2',
-     finished_date: nil, approved_date: nil, house_id: 4, owner_id: 5, assignee_id: 5, reviewer_id: nil }]
+     finished_date: nil, approved_date: nil, house_id: 4, owner_id: 6, assignee_id: 5, reviewer_id: nil }]
 )
 
 Comment.create(
-  [{ content: 'Recuerda barrer la oficina', user_id: 1, task_id: 1 },
-   { content: 'Barrí la oficina ayer', user_id: 2, task_id: 1 },
-   { content: 'Cierto, lo habia olvidado', user_id: 3, task_id: 4 },
-   { content: 'Compra manzanas', user_id: 4, task_id: 6 },
-   { content: 'vale, las compro mañana', user_id: 5, task_id: 6 }]
+  [{ content: 'Recuerda barrer la oficina', user_id: 2, task_id: 1 },
+   { content: 'Barrí la oficina ayer', user_id: 3, task_id: 1 },
+   { content: 'Cierto, lo habia olvidado', user_id: 4, task_id: 4 },
+   { content: 'Compra manzanas', user_id: 5, task_id: 6 },
+   { content: 'vale, las compro mañana', user_id: 6, task_id: 6 }]
 )

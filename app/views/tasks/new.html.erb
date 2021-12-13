@@ -1,11 +1,12 @@
-<div class="container new-task-container my-4">
-  <div class="card register-card">
-    <div class="card-body mx-auto">
-      <h4 class="card-title m-3 text-center">Crea una nueva tarea</h4>
-      <%= render 'form', task: @task %>
-    </div> <!-- card.// -->
+<body class="d-flex flex-column min-vh-100">
+  <div class="container new-task-container my-4">
+    <div class="card register-card">
+      <div class="card-body mx-auto">
+        <h4 class="card-title m-3 text-center">Crea una nueva tarea</h4>
+        <%= render 'form', task: @task %>
+      </div> <!-- card.// -->
+    </div>
   </div>
-</div>
-<%= render "shared/footer" %>
-
+  <%= render "shared/footer" %>
+</body>
 

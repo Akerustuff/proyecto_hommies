@@ -1,80 +1,175 @@
-<p>
-  <strong>Nombre:</strong>
-  <%= @task.name %>
-</p>
+<body class="d-flex flex-column min-vh-100">
+  <div class="container mb-3">
+    <div class="breadcrumbs-task">
+      <%= link_to 'Volver al listado de tareas', tasks_path %>
+    </div>
+    <div class="row">
+      <div class="col-2 mt-5">
+      </div>
+      <div class="col-5 mt-5">
+        <h1 class="task-text mb-5">Tarea: <%= @task.name %></h1>
+        <h4 class="task-text">Descripción:</h4>
+        <p class="task-text"> <%= @task.description %> </p>
+      </div>
+      <div class="col mt-5">
+        <% if @task.owner_id == current_user.id %>
+          <button type="button" class="btn edit-task-btn">
+            <%= link_to 'Editar tarea', edit_task_path(@task),  class:"px-0" %>
+          </button>
+          <button type="button" class="btn delete-task-btn">
+            <%= link_to 'Eliminar tarea', @task, method: :delete, data: { confirm: 'Estás seguro de eliminar la tarea?' }, class:"px-0" %>
+          </button>
+        <% end %>
+    </div>
 
-<p>
-  <strong>Descripcion:</strong>
-  <%= @task.description %>
-</p>
+    <div class="row mt-2">
+      <div class="col-2">
+      </div>
+      <div class="col-5">
 
-<p>
-  <strong>Categoria:</strong>
-  <%= @task.category %>
-</p>
+        <div class="row">
+          <div class="col-6">
+            <h4 class="task-text">Categoría:</h4>
+            <p class="task-text"> <%= @task.category %> </p>
+          </div>
 
-<p>
-  <strong>Fecha limite:</strong>
-  <%= @task.limit_date %>
-</p>
+          <div class="col-6">
+            <h4 class="task-text">Estado de la tarea:</h4>
+            <p class="task-text">
+              <%= 'Sin asignar' if @task.created?%>
+              <%= 'Asignada' if @task.assigned?%>
+              <%= 'Por aprobar' if @task.finished?%>
+              <%= 'Aprobada' if @task.approved?%>
+            </p>
+          </div>
+        </div>
 
-<p>
-  <strong>Creado por:</strong>
-  <%= @task.owner %>
-</p>
-<p>
-  <strong>Aprobado por:</strong>
-  <%= @task.reviewer %>
-</p>
-<p>
-  <strong>Asignado a:</strong>
-  <%= @task.assignee.nil? ? 'Sin asignar' : @task.assignee %>
-</p>
+        <div class="row">
+          <div class="col-6">
+            <h4 class="task-text">Fecha límite:</h4>
+            <p class="task-text"> <%= @task.limit_date %> </p>
+          </div>
 
-<p>
-  <strong>Estado de la tarea: </strong>
-    <%= 'Sin asignar' if @task.created?%>
-    <%= 'Asignada' if @task.assigned?%>
-    <%= 'Por aprobar' if @task.finished?%>
-    <%= 'Aprobada' if @task.approved?%>
-</p>
+          <div class="col-6">
+            <h4 class="task-text">Tarea creada por:</h4>
+            <p class="task-text">
+              <span><%= image_tag(@task.owner.thumbnail_photo) %></span>
+              <span><%= @task.owner %></span>
+            </p>
+          </div>
+        </div>
 
-<div>
-<% if @task.assigned? && current_user.id == @task.assignee_id %>
-  <%= link_to 'Finalizar Tarea', finish_task_path(id: @task.id) %>
-<% elsif @task.finished? && current_user.id != @task.assignee_id %>
-  <%= link_to 'Aprobar Tarea', approve_task_path(id: @task.id) %>
-  <%= link_to 'Rechazar Tarea', reject_task_path(id: @task.id) %>
-<% end %>
-</div>
+        <div class="row">
+          <div class="col-6">
+            <h4 class="task-text">Tarea asignada a:</h4>
+            <p class="task-text">
+              <% if @task.assignee.nil? %>
+                <span class="task-text">Sin asignar</span>
+              <% else %>
+                <span><%= image_tag(@task.assignee.thumbnail_photo) %></span>
+                <span><%= @task.assignee %></span>
+              <% end %>
+              </p>
+          </div>
 
-<div>
-<h4>Comentarios</h4>
-</div>
-<div>
-  <%= render 'comments/form', comment: @comment %>
+          <div class="col-6">
+            <% if @task.approved? %>
+            <h4 class="task-text">Tarea aprobada a:</h4>
+            <p class="task-text">
+              <span><%= image_tag(@task.reviewer.thumbnail_photo) %></span>
+              <span><%= @task.reviewer %></span>
+            </p>
+            <% end %>
+          </div>
+        </div>
+      </div>
+      <div class="col-5">
+      </div>
+    </div>
 
-<% @comments.each do |comment|%>
-  <div>
-    <%= image_tag(comment.user.thumbnail_photo) %>
-    <%= comment.user.first_name %>
-    <hr/>
-    <%= comment.content %>
-    <hr/>
-    <% (0...comment.images.count).each do |image| %>
-    <%= image_tag(comment.comment_image_style(image)) %>
-    <% end %>
-    <hr/>
-    <%= comment.created_at %>
-    <hr/>
-    <%= link_to 'Eliminar', comment, method: :delete, data: { confirm: 'Estás seguro de eliminar el comentario?' } %>
-    <% end %>
+    <div class="d-flex justify-content-center mt-5">
+      <% if @task.assigned? && current_user.id == @task.assignee_id %>
+        <button type="button" class="btn finish-task-btn">
+          <%= link_to 'Finalizar Tarea', finish_task_path(id: @task.id), class:"px-0" %>
+        </button>
+
+      <% elsif @task.finished? && current_user.id != @task.assignee_id %>
+        <button type="button" class="btn reject-task-btn">
+          <%= link_to 'Rechazar Tarea', reject_task_path(id: @task.id), class:"px-0" %>
+        </button>
+        <button type="button" class="btn approve-task-btn">
+          <%= link_to 'Aprobar Tarea', approve_task_path(id: @task.id), class:"px-0" %>
+        </button>
+      <% end %>
+    </div>
+
+    <div class="mt-5">
+      <h4 class="task-text">Comentarios</h4>
+    </div>
+      <section class="card bg-comments px-0 mb-5">
+        <div class="card-header">
+          <ul class="nav nav-tabs card-header-tabs">
+            <li class="nav-item ">
+              <p class="nav-link">Escribe un comentario</p>
+            </li>
+          </ul>
+        </div>
+        <div class="card-comment">
+          <div class="form-group">
+            <%= render 'comments/form', comment: @comment %>
+          </div>
+        </div>
+      </section>
+
+      <% @comments.each do |comment|%>
+        <section class="card bg-comments mb-3">
+          <div class="row m-2">
+            <div class="col-1">
+              <span>
+                <%= image_tag(comment.user.thumbnail_photo) %>
+              </span>
+            </div>
+            <div class= "col-11 px-0">
+              <div>
+                <h5 class="text-capitalize task-text">
+                  <%= comment.user.first_name %> <%= comment.user.last_name %>
+                </h5>
+                <p class="small text-secondary m-0 mt-1">
+                  <%= time_ago_in_words(comment.created_at) %>
+                </p>
+              </div>
+              <div>
+                <p class="my-2">
+                  <%= comment.content %>
+                </p>
+              </div>
+            </div>
+          </div>
+          <hr class="my-1">
+          
+          <% unless (comment.images.count==0) %>
+            <div class="my-1">
+              <% (0...comment.images.count).each do |image| %>
+                <%= image_tag(comment.comment_image_style(image)) %>
+              <% end %>
+              <hr class="my-1">
+            </div>
+          <% end %>
+
+          <div class="row m-2">
+            <div class="col-7">
+            </div>
+            <div class="col-5 d-flex justify-content-end">
+              <button type="button" class="btn delete-comment-btn">
+                <%= link_to 'Eliminar', comment, method: :delete, data: { confirm: 'Estás seguro de eliminar el comentario?' }, class:"px-0" %>
+              </button>
+            </div>
+          </div>
+        </section>
+      <% end %>
+
+      <%= paginate @comments %>
+    </div>
   </div>
-</div>
-  <%= paginate @comments %>
-
-<% if @task.owner_id == current_user.id %>
-  <%= link_to 'Editar', edit_task_path(@task) %> |
-  <%= link_to 'Eliminar', @task, method: :delete, data: { confirm: 'Estás seguro de eliminar la tarea?' } %> |
-<% end %>
-<%= link_to 'Volver', tasks_path %>
+  <%= render "shared/footer" %>
+</body>
