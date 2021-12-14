@@ -53,7 +53,11 @@
           <div class="col-6">
             <h4 class="task-text">Tarea creada por:</h4>
             <p class="task-text">
+              <% if @task.owner.avatar.attached?%>
               <span><%= image_tag(@task.owner.thumbnail_photo) %></span>
+              <% else %>
+                <%= image_tag 'default_avatar.png', class:"thumbnail_photo"%>
+              <% end %>
               <span><%= @task.owner %></span>
             </p>
           </div>
@@ -66,7 +70,11 @@
               <% if @task.assignee.nil? %>
                 <span class="task-text">Sin asignar</span>
               <% else %>
-                <span><%= image_tag(@task.assignee.thumbnail_photo) %></span>
+                <% if @task.assignee.avatar.attached?%>
+                  <span><%= image_tag(@task.assignee.thumbnail_photo) %></span>
+                <% else %>
+                  <%= image_tag 'default_avatar.png', class:"thumbnail_photo"%>
+                <% end %>
                 <span><%= @task.assignee %></span>
               <% end %>
               </p>
@@ -76,7 +84,11 @@
             <% if @task.approved? %>
             <h4 class="task-text">Tarea aprobada a:</h4>
             <p class="task-text">
-              <span><%= image_tag(@task.reviewer.thumbnail_photo) %></span>
+              <% if @task.reviewer.avatar.attached?%>
+                  <span><%= image_tag(@task.reviewer.thumbnail_photo) %></span>
+                <% else %>
+                  <%= image_tag 'default_avatar.png', class:"thumbnail_photo"%>
+                <% end %>
               <span><%= @task.reviewer %></span>
             </p>
             <% end %>
@@ -135,7 +147,12 @@
           <div class="row m-2">
             <div class="col-1">
               <span>
-                <%= image_tag(comment.user.thumbnail_photo) %>
+              <% if comment.user.avatar.attached?%>
+              <%= image_tag(comment.user.thumbnail_photo) %>
+              <% else %>
+                <%= image_tag 'default_avatar.png', class:"thumbnail_photo"%>
+              <% end %>
+                
               </span>
             </div>
             <div class= "col-11 px-0">

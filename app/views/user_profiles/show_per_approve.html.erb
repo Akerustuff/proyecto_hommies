@@ -3,7 +3,11 @@
     <div class="row">
       <div class="col-md-4">
         <div class="profile-img">
-          <%= image_tag(@profile.profile_photo) %>
+          <% if @profile.avatar.attached?%>
+              <%= image_tag(@profile.profile_photo) %>
+            <% else %>
+              <%= image_tag 'default_avatar.png', class:"profile_photo"%>
+            <% end %>
           <div class="edit-photo btn btn-primary px-0">
             <%= link_to 'editar foto', edit_user_profile_path, class:"profile-edit-photo-btn" %>
           </div>

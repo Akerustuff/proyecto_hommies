@@ -4,7 +4,18 @@ body,
 			padding: 0;
 			background: #F3EDE6
 		}
-
+    .thumbnail_photo{
+      height: 40px;
+      width: 50px;
+    }
+    .profile_photo{
+      height: 280px;
+      width: 300px;
+    }
+    .edit_avatar_photo{
+      height: 220px;
+      width: 250px;
+    }
     // Css de la vista de Login
 
     .user_card {

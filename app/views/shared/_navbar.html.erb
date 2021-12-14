@@ -8,7 +8,11 @@
       <ul class="navbar-nav">
         <% if user_signed_in?%>
           <span>
-            <%= image_tag(current_user.thumbnail_photo) %>
+            <% if current_user.avatar.attached?%>
+              <%= image_tag(current_user.thumbnail_photo) %>
+            <% else %>
+              <%= image_tag 'default_avatar.png', class:"thumbnail_photo"%>
+            <% end %>
           </span>
           <li class="nav-item dropdown">
             <a class="nav-link dropdown-toggle pt-3" href="#" id="navbarDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false">

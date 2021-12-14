@@ -23,11 +23,11 @@ class User < ApplicationRecord
   # Validación de soft delete
   acts_as_paranoid
 
-  before_create do
-    file_path = 'app/assets/images/default_avatar.png'
-    file_name = 'default_avatar.png'
-    avatar.attach(io: File.open(file_path), filename: file_name) unless avatar.attached?
-  end
+  # before_create do
+  #   file_path = 'app/assets/images/default_avatar.png'
+  #   file_name = 'default_avatar.png'
+  #   avatar.attach(io: File.open(file_path), filename: file_name) unless avatar.attached?
+  # end
 
   def to_s
     first_name
