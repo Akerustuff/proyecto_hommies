@@ -5,6 +5,9 @@ Rails.application.routes.draw do
   resources :comments, only: %i[new create destroy]
   # Users routes
   resource :user_profile, only: %i[show edit update]
+  get '/show_per_assign/:id', to: 'user_profiles#show_per_assign', as: 'user_profile_per_assign_tasks'
+  get '/show_per_approve/:id', to: 'user_profiles#show_per_approve', as: 'user_profile_per_approve_tasks'
+  get '/show_approved/:id', to: 'user_profiles#show_approved', as: 'user_profile_approved_tasks'
   get '/take_out_user/:id', to: 'user_profiles#take_out_user', as: 'take_out_user'
   put '/edit_ajax', to: 'user_profiles#edit_ajax', as: 'edit_ajax'
 

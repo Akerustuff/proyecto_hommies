@@ -93,13 +93,22 @@
           <%= link_to 'Finalizar Tarea', finish_task_path(id: @task.id), class:"px-0" %>
         </button>
 
-      <% elsif @task.finished? && current_user.id != @task.assignee_id %>
-        <button type="button" class="btn reject-task-btn">
-          <%= link_to 'Rechazar Tarea', reject_task_path(id: @task.id), class:"px-0" %>
-        </button>
-        <button type="button" class="btn approve-task-btn">
-          <%= link_to 'Aprobar Tarea', approve_task_path(id: @task.id), class:"px-0" %>
-        </button>
+      <% elsif @task.finished? %>
+        <% if @house.users.count == 1 %>
+          <button type="button" class="btn reject-task-btn">
+            <%= link_to 'Rechazar Tarea', reject_task_path(id: @task.id), class:"px-0" %>
+          </button>
+          <button type="button" class="btn approve-task-btn">
+            <%= link_to 'Aprobar Tarea', approve_task_path(id: @task.id), class:"px-0" %>
+          </button>
+        <% elsif current_user.id != @task.assignee_id%>
+          <button type="button" class="btn reject-task-btn">
+            <%= link_to 'Rechazar Tarea', reject_task_path(id: @task.id), class:"px-0" %>
+          </button>
+          <button type="button" class="btn approve-task-btn">
+            <%= link_to 'Aprobar Tarea', approve_task_path(id: @task.id), class:"px-0" %>
+          </button>
+        <% end %>
       <% end %>
     </div>
 

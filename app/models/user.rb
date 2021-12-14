@@ -41,6 +41,18 @@ class User < ApplicationRecord
     assigned_tasks.assigned
   end
 
+  def user_per_assign_tasks
+    Task.where(owner_id: id, assignee_id: nil)
+  end
+
+  def user_per_approve_tasks
+    Task.where(house_id: house_id, aasm_state: 'finished').where.not(assignee_id: id)
+  end
+
+  def user_approved_tasks
+    Task.where(reviewer_id: id)
+  end
+
   def change_ownership_tasks
     tasks = Task.where(owner_id: id)
     owner_house = User.find_by(owner: true, house_id: house_id)
@@ -60,6 +72,10 @@ class User < ApplicationRecord
 
   def avatar_photo
     avatar.variant(resize: '100x100')
+  end
+
+  def profile_photo
+    avatar.variant(resize: '300x300')
   end
 
   def edit_avatar_photo

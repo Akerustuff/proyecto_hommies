@@ -1,12 +1,34 @@
 # frozen_string_literal: true
 
 class UserProfilesController < ApplicationController
-  before_action :set_user_profile, only: %i[show edit update edit_ajax]
+  before_action :set_user_profile, only: %i[show edit update edit_ajax show_per_assign
+                                            show_per_approve show_approved]
   skip_before_action :verify_authenticity_token, only: %i[edit_ajax]
 
   def show
-    @my_tasks = @profile.my_tasks
+    # @my_tasks = @profile.my_tasks
     @my_pending_tasks = @profile.user_pending_tasks
+    @house = House.find_by(id: @profile.house_id)
+    @house_members = @house.house_members
+    @tasks_grouped_by_state = @profile.my_tasks.group(:aasm_state).count
+  end
+
+  def show_per_assign
+    @per_assign_tasks = @profile.user_per_assign_tasks
+    @house = House.find_by(id: @profile.house_id)
+    @house_members = @house.house_members
+    @tasks_grouped_by_state = @profile.my_tasks.group(:aasm_state).count
+  end
+
+  def show_per_approve
+    @per_approve_tasks = @profile.user_per_approve_tasks
+    @house = House.find_by(id: @profile.house_id)
+    @house_members = @house.house_members
+    @tasks_grouped_by_state = @profile.my_tasks.group(:aasm_state).count
+  end
+
+  def show_approved
+    @approved_tasks = @profile.user_approved_tasks
     @house = House.find_by(id: @profile.house_id)
     @house_members = @house.house_members
     @tasks_grouped_by_state = @profile.my_tasks.group(:aasm_state).count

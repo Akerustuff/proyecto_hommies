@@ -91,16 +91,16 @@
         <div class="profile-head">
           <ul class="nav nav-tabs">
               <li class="nav-item">
-                  <%= link_to 'Pendientes', user_profile_path, class:"nav-link active" %>
+                  <%= link_to 'Pendientes', user_profile_path, class:"nav-link profile-tab-p" %>
               </li>
               <li class="nav-item">
-                  <%= link_to 'Por asignar', user_profile_per_assign_tasks_path(@profile), class:"nav-link profile-tab-p" %>
+                  <%= link_to 'Por asignar', user_profile_per_assign_tasks_path, class:"nav-link active" %>
               </li>
               <li class="nav-item">
-                  <%= link_to 'Por aprobar', user_profile_per_approve_tasks_path(@profile), class:"nav-link profile-tab-p" %>
+                  <%= link_to 'Por aprobar', user_profile_per_approve_tasks_path, class:"nav-link profile-tab-p" %>
               </li>
               <li class="nav-item">
-                  <%= link_to 'Aprobadas por mi', user_profile_approved_tasks_path(@profile), class:"nav-link profile-tab-p" %>
+                  <%= link_to 'Aprobadas por mi', user_profile_approved_tasks_path, class:"nav-link profile-tab-p" %>
               </li>
           </ul>
         </div>
@@ -113,7 +113,7 @@
               <th>Creado por</th>
               <th class="d-flex justify-content-center">Acciones</th>
             </tr>
-            <% @my_pending_tasks.each do |task|%>
+            <% @per_assign_tasks.each do |task|%>
               <tr>
               <td><%= task.name%></td>
               <td><%= task.category%></td>
@@ -123,7 +123,7 @@
               </tr>
             <% end %>
           </table>
-          <% if @my_pending_tasks.empty? %>
+          <% if @per_assign_tasks.empty? %>
             <div class="d-flex justify-content-center">
               <p class="task-text">No se encontraron resultados</p>
             </div>

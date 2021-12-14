@@ -1,16 +1,16 @@
 <%= form_with(model: @profile, url: '#', method: :put, local: true) do |f| %>
-  <div class="field">
-    <%= f.label :first_name %><br />
-    <%= f.text_field :first_name, class: 'first_name_field'  %>
+  <div class="field mb-2">
+    <%= f.label :first_name, "Nombre" %><br />
+    <%= f.text_field :first_name, class: 'first_name_field form-control'  %>
   </div>
 
-  <div class="field">
-    <%= f.label :last_name %><br />
-    <%= f.text_field :last_name, class: 'last_name_field' %>
+  <div class="field mb-2">
+    <%= f.label :last_name, "Apellido" %><br />
+    <%= f.text_field :last_name, class: 'last_name_field form-control' %>
   </div>
 
-  <div class="field">
-    <%= f.label :birthdate %><br />
-    <%= f.date_select :birthdate %>
+  <div class="field mb-2">
+    <%= f.label :birthdate, "Fecha de nacimiento" %><br />
+    <%= f.date_select :birthdate, order: [:day, :month, :year], class:"form-control" %>
   </div>
 <% end %>

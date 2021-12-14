@@ -10,6 +10,7 @@ class TasksController < ApplicationController
   end
 
   def show
+    @house = House.find_by(id: current_user.house_id)
     @comments = Comment.where(task_id: @task.id).order('created_at DESC').page params[:page]
     @comment = Comment.new
   end
