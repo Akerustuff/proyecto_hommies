@@ -141,10 +141,11 @@ body,
   }
   .edit-photo-btn {
     width: 50%;
-    color: white;
+    color: #212529;
+    background: #8FE6B1;
   }
   .edit-photo-btn:hover {
-    color: #393939;
+    color: #F3EDE6;
   }
   .edit-photo-btn:focus {
     box-shadow: none !important;
@@ -213,7 +214,7 @@ body,
   text-decoration: none;
   background: #72D1DB
 }
-.edit-photo-btn{
+.profile-edit-photo-btn{
   border: none;
   border-radius: 0.25rem;
   width: 70%;
