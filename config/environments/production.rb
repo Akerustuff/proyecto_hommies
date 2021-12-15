@@ -94,7 +94,7 @@ Rails.application.configure do
   end
 
   # Do not dump schema after migrations.
-  # config.active_record.dump_schema_after_migration = false
+  config.active_record.dump_schema_after_migration = false
 
   # notify = lambda do |e|
   #   Rollbar.with_config(use_async: false) do
