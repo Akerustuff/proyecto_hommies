@@ -80,8 +80,10 @@
             </div>
             <br>
             <% else %>
-              <div>
-                <%= link_to 'Dejar casa', leave_house_path, data: { confirm: '¿Estás seguro de que deseas abandonar la casa?' } %>
+              <div class="d-flex justify-content-center mt-4">
+                <button type="button" class="btn leave-house-btn">
+                  <%= link_to 'Dejar casa', leave_house_path, data: { confirm: '¿Estás seguro de que deseas abandonar la casa?' }, class:'px-0' %>
+                </button>
               </div>
             <% end %>
           </div>
