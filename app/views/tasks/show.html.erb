@@ -82,7 +82,7 @@
 
           <div class="col-6">
             <% if @task.approved? %>
-            <h4 class="task-text">Tarea aprobada a:</h4>
+            <h4 class="task-text">Tarea aprobada por:</h4>
             <p class="task-text">
               <% if @task.reviewer.avatar.attached?%>
                   <span><%= image_tag(@task.reviewer.thumbnail_photo) %></span>
