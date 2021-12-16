@@ -30,7 +30,7 @@ class CommentsController < ApplicationController
     @task = @comment.task
     @comment.destroy
     respond_to do |format|
-      format.html { redirect_to @task, notice: 'La tarea ha sido eliminada.' }
+      format.html { redirect_to @task, notice: 'El comentario ha sido eliminado.' }
       format.json { head :no_content }
     end
   end
