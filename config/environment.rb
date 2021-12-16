@@ -6,8 +6,8 @@
 # Initialize the Rails application.
 # Rails.application.initialize!
 
-require File.expand_path('../application', __FILE__)
-require File.expand_path('../rollbar', __FILE__)
+require File.expand_path('application', __dir__)
+require File.expand_path('rollbar', __dir__)
 
 notify = lambda do |e|
   Rollbar.with_config(use_async: false) do
