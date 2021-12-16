@@ -7,77 +7,8 @@ Rollbar.configure do |config|
   config.access_token = ENV['ROLLBAR_ACCESS_TOKEN']
 
   # Here we'll disable in 'test':
-  # config.enabled = false if Rails.env.test?
-  # config.enabled = %w[production staging].include?(Rails.env)
-  # config.async_handler = nil
-  # config.before_process = []
-  # config.capture_uncaught = nil
-  # config.code_version = nil
-  # config.custom_data_method = nil
-  # config.logger_level = :info
-  # config.delayed_job_enabled = true
-  # config.disable_monkey_patch = false
-  # config.disable_core_monkey_patch = false
-  # config.disable_rack_monkey_patch = false
-  # config.dj_threshold = 0
-  # config.enabled = nil # set to true when configure is called
-  # config.endpoint = DEFAULT_ENDPOINT
-  # config.environment = nil
-  # config.exception_level_filters = {
-  #   'ActiveRecord::RecordNotFound' => 'warning',
-  #   'AbstractController::ActionNotFound' => 'warning',
-  #   'ActionController::RoutingError' => 'warning'
-  # }
-  # config.failover_handlers = []
-  # config.framework = 'Plain'
-  # config.ignored_person_ids = []
-  # config.payload_options = {}
-  # config.person_method = 'current_user'
-  # config.person_id_method = 'id'
-  # config.person_username_method = nil
-  # config.person_email_method = nil
-  # config.project_gems = []
-  # config.populate_empty_backtraces = false
-  # config.report_dj_data = true
-  # config.open_timeout = 3
-  # config.request_timeout = 3
-  # config.net_retries = 3
-  # config.js_enabled = false
-  # config.js_options = {}
-  # config.locals = {}
-  # config.scrub_fields = %i[passwd password password_confirmation secret
-  #                          confirm_password password_confirmation secret_token
-  #                          api_key access_token accessToken session_id]
-  # config.scrub_user = true
-  # config.scrub_password = true
-  # config.randomize_scrub_length = false
-  # config.scrub_whitelist = []
-  # config.uncaught_exception_level = 'error'
-  # config.scrub_headers = ['Authorization']
-  # config.sidekiq_threshold = 0
-  # config.safely = false
-  # config.transform = []
-  # config.use_async = false
-  # config.use_eventmachine = false
-  # config.verify_ssl_peer = true
-  # config.web_base = DEFAULT_WEB_BASE
-  # config.write_to_file = false
-  # config.send_extra_frame_data = :none
-  # config.project_gem_paths = []
-  # config.use_exception_level_filters_default = false
-  # config.proxy = nil
-  # config.raise_on_error = false
-  # config.transmit = true
-  # config.log_payload = false
-  # config.collect_user_ip = true
-  # config.anonymize_user_ip = false
-  # config.backtrace_cleaner = nil
-  # config.hooks = {
-  #   on_error_response: nil, # params: response
-  #   on_report_internal_error: nil # params: exception
-  # }
+  config.enabled = false if Rails.env.test?
 
-  config.configured_options = ConfiguredOptions.new(self)
   # By default, Rollbar will try to call the `current_user` controller method
   # to fetch the logged-in user object, and then call that object's `id`
   # method to fetch this property. To customize:
