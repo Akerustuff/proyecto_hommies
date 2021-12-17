@@ -39,7 +39,7 @@
           <div class="input-group mb-3">
             <span class="input-group-text"><i class="fas fa-calendar"></i></span>
             <span class="align-middle">
-              <%= f.date_select :birthdate, start_year: Date.today.year, end_year: Date.today.year - 100, class:"form-control input_user p-2 border-0"%>
+              <%= f.date_select :birthdate, start_year: Date.today.year, end_year: Date.today.year - 100, order: [:day, :month, :year], class:"form-control input_user p-2 border-0"%>
             </span>
           </div>
 

@@ -47,7 +47,7 @@
         <div class="row">
           <div class="col-6">
             <h4 class="task-text">Fecha límite:</h4>
-            <p class="task-text"> <%= @task.limit_date %> </p>
+            <p class="task-text"> <%= @task.limit_date.strftime('%d/%m/%Y') %> </p>
           </div>
 
           <div class="col-6">

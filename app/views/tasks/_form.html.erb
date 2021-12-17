@@ -16,7 +16,7 @@
 
   <div class="mb-3">
     <%= form.label :limit_date, "Fecha límite", class:"mb-1 form-text" %><br/>
-    <%= form.date_select :limit_date, start_year: Date.today.year, end_year: Date.today.year + 20, class:"form-control input_user p-2 border-0"%>
+    <%= form.date_select :limit_date, start_year: Date.today.year, end_year: Date.today.year + 20, order: [:day, :month, :year], class:"form-control input_user p-2 border-0"%>
   </div>
 
   <div class="mb-3">

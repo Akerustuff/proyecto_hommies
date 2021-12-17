@@ -41,9 +41,17 @@
             <%= 'Por aprobar' if task.finished?%>
             <%= 'Aprobada' if task.approved?%>
           </td>
-          <td><%= task.limit_date%></td>
-          <td><%= task.finished_date%></td>
-          <td><%= task.approved_date%></td>
+          <td><%= task.limit_date.strftime('%d/%m/%Y')%></td>
+          <% if task.finished_date.nil?%>
+            <td> </td>
+          <% else %>
+            <td><%= task.finished_date.strftime('%d/%m/%Y')%></td>
+          <% end %>
+          <% if task.approved_date.nil?%>
+            <td> </td>
+          <% else %>
+            <td><%= task.approved_date.strftime('%d/%m/%Y')%></td>
+          <% end %>
           <td><%= task.assignee%></td>
           <td><%= task.owner%></td>
           <td><%= task.reviewer%></td>
